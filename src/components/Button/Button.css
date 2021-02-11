@@ -1,0 +1,51 @@
+.button {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  background-color: transparent;
+  color: white;
+  outline: 0;
+  cursor: pointer;
+  border: 0;
+}
+
+.button_bordered {
+  border: 1px solid #FFF;
+}
+
+.button_color_green {
+  background-color: #3DDC84;
+  color: #000;
+}
+
+.button_color_dark-grey {
+  background-color: #2F2F2F;
+  color: #FFF;
+}
+
+.button_color_blue {
+  background-color: #4285F4;
+  color: #FFF;
+}
+
+.button_color_pink {
+  background-color: #EE3465;
+  color: #FFF;
+}
+
+.button_border-radius_3 {
+  border-radius: 3px;
+}
+
+.button_border-radius_6 {
+  border-radius: 6px;
+}
+
+.button_border-radius_30 {
+  border-radius: 30px;
+}
+
+.button_border-radius_40 {
+  border-radius: 40px;
+}
