@@ -1,12 +1,12 @@
 import Header from './Header/Header';
-import NotFoundPage from './NotFoundPage/NotFoundPage';
+import Footer from './Footer/Footer';
 import './App.css';
 
 function App() {
   return (
     <div className="app">
-      {/* <Header isLoggedIn={true}/> */}
-      <NotFoundPage/>
+      <Header isLoggedIn={true}/>
+      <Footer/>
     </div>
   );
 }
