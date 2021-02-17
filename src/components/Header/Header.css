@@ -2,7 +2,7 @@
   max-width: 1140px;
   margin: auto;
   height: 74px;
-  box-sizing: content-box;
+  box-sizing: border-box;
   padding: 0 70px;
   display: flex;
   flex-direction: row;
@@ -84,4 +84,47 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.header__menu-btn {
+  display: none;
+}
+
+.header__menu-icon {
+  cursor: pointer;
+  display: none;
+}
+
+/* burger menu */
+.header__navicon {
+  background: #FFF;
+  display: block;
+  height: 3px;
+  position: relative;
+  /* transition: background .2s ease-out; */
+  width: 28px;
+}
+
+.header__navicon:before,
+.header__navicon:after {
+  background: #FFF;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  /* transition: all .2s ease-out; */
+  width: 100%;
+}
+
+.header__navicon:before {
+  top: 7px;
+}
+
+.header__navicon:after {
+  top: -7px;
+}
+
+
+@media (max-width: 768px) {
+
 }

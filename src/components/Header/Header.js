@@ -17,14 +17,18 @@ export default function Headers(props) {
         </List>
       </nav>}
 
-      {isLoggedIn
-        ? <div className="header__panel">
-          <Button className="header__profile-button" borderRadius="40">Аккаунт</Button>
-        </div>
-        : <div className="header__panel">
-          <Button className="header__sign-button">Регистрация</Button>
-          <Button className="header__sign-button header__signin" color="green" borderRadius="3">Войти</Button>
-        </div>}
+      <div className="header__panel">
+          <input class="header__menu-btn" type="checkbox" id="menu-btn" />
+          <label class="header__menu-icon" for="menu-btn">
+            <span class="header__navicon"></span>
+          </label>
+          {isLoggedIn
+            ? <Button className="header__profile-button" borderRadius="40">Аккаунт</Button>
+            : <div>
+              <Button className="header__sign-button">Регистрация</Button>
+              <Button className="header__sign-button header__signin" color="green" borderRadius="3">Войти</Button>
+            </div>}
+      </div>
     </header>
   );
 }
