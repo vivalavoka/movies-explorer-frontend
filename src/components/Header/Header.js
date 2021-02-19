@@ -9,7 +9,7 @@ export default function Headers(props) {
     <header className="header">
       <img src={logo} className="header__logo" alt="logo" />
 
-      <input class="header__menu-btn" type="checkbox" id="menu-btn" />
+      {/* <input class="header__menu-btn" type="checkbox" id="menu-btn" />
       <label class="header__menu-icon" for="menu-btn">
         <span class="header__navicon"></span>
       </label>
@@ -23,9 +23,9 @@ export default function Headers(props) {
         <div className="header__panel">
           <Button className="header__profile-button" borderRadius="40">Аккаунт<span className="header__profile-icon"></span></Button>
         </div>
-      </div>
+      </div> */}
 
-      {/* {isLoggedIn &&
+      {isLoggedIn &&
       <nav className="header__navigation">
         <List>
           <li className="header__item"><a className="header__link header__link_active" href='#'>Фильмы</a></li>
@@ -35,12 +35,12 @@ export default function Headers(props) {
 
       <div className="header__panel">
           {isLoggedIn
-            ? <Button className="header__profile-button" borderRadius="40">Аккаунт</Button>
+            ? <Button className="header__profile-button" borderRadius="40">Аккаунт<span className="header__profile-icon"></span></Button>
             : <div>
               <Button className="header__sign-button">Регистрация</Button>
               <Button className="header__sign-button header__signin" color="green" borderRadius="3">Войти</Button>
             </div>}
-      </div> */}
+      </div>
     </header>
   );
 }
