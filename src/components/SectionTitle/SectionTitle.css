@@ -1,0 +1,11 @@
+.section-title {
+  margin: 0;
+  padding: 23px 0;
+  width: 100%;
+  color: #FFF;
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: normal;
+  text-align: left;
+  border-bottom: 1px solid #DADADA;
+}
