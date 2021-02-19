@@ -9,7 +9,7 @@ import './Button.css';
  * @param {String} borderRadius 3|6|30|40
  */
 export default function Button(props) {
-  const {className, onClick, disabled, bordered, color, borderRadius} = props;
+  const { className, onClick, disabled, bordered, color, borderRadius } = props;
   const _bordered = bordered ? `button_bordered` : '';
   const _color = color ? `button_color_${color}` : '';
   const _borderRadius = borderRadius ? `button_border-radius_${borderRadius}` : '';
