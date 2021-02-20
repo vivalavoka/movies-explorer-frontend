@@ -41,7 +41,7 @@
 
 .about__timing {
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: minmax(100px, 1fr) 4fr;
   row-gap: 4px;
 }
 
