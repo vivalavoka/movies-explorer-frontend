@@ -18,6 +18,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 40px;
+  margin-bottom: 110px;
 }
 
 .about__article-title {
@@ -36,6 +37,36 @@
   font-size: 14px;
   line-height: 1.2;
   font-weight: normal;
+}
+
+.about__timing {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  row-gap: 4px;
+}
+
+.about__timing-block {
+  margin: 0;
+  padding: 10px 0;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: normal;
+  text-align: center;
+}
+
+.about__backend-timing {
+  background-color: #3DDC84;
+  color: #000;
+}
+
+.about__frontend-timing {
+  background-color: #303030;
+  color: #FFF;
+}
+
+.about__timing-title {
+  color: #8B8B8B;
 }
 
 @media (max-width: 768px) {
