@@ -2,13 +2,6 @@
   background-color: #272727;
 }
 
-.techs__content {
-  max-width: 1140px;
-  box-sizing: border-box;
-  margin: auto;
-  padding: 100px 70px 100px;
-}
-
 .techs__title {
   margin-bottom: 90px;
 }
@@ -36,7 +29,12 @@
   margin-bottom: 100px;
 }
 
+.techs__list {
+  display: grid;
+}
+
 .techs__item {
+  margin: 0;
   margin-right: 10px;
   padding: 21px 26px;
   background-color: #303030;
@@ -53,24 +51,21 @@
 }
 
 @media (max-width: 768px) {
-  .techs__content {
-    padding: 90px 50px 0;
-  }
   .techs__description {
     font-size: 12px;
   }
 }
 
 @media (max-width: 425px) {
-  .techs__content {
-    padding: 70px 18px 0;
-  }
-
   .techs__subtitle {
     font-size: 30px;
   }
 
   .techs__description {
     font-size: 11px;
+  }
+
+  .techs__list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

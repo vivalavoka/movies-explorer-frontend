@@ -1,13 +1,5 @@
 .about {
-  
   background-color: #202020;
-}
-
-.about__content {
-  max-width: 1140px;
-  box-sizing: border-box;
-  margin: auto;
-  padding: 110px 70px 100px;
 }
 
 .about__title {
@@ -70,10 +62,6 @@
 }
 
 @media (max-width: 768px) {
-  .about__content {
-    padding: 90px 50px 0;
-  }
-
   .about__article-list {
     column-gap: 30px;
   }
@@ -89,10 +77,6 @@
 }
 
 @media (max-width: 425px) {
-  .about__content {
-    padding: 70px 18px 0;
-  }
-
   .about__article-list {
     grid-template-columns: 1fr;
     row-gap: 56px;
