@@ -1,0 +1,14 @@
+.portfolio {
+  background-color: #202020;
+}
+
+.portfolio__arrow {
+  background-image: url(../../images/arrow-min.svg);
+}
+
+@media (max-width: 768px) {
+}
+
+
+@media (max-width: 550px) {
+}

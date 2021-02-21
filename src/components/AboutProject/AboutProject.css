@@ -1,19 +1,19 @@
-.about {
+.about-project {
   background-color: #202020;
 }
 
-.about__title {
+.about-project__title {
   margin-bottom: 70px;
 }
 
-.about__article-list {
+.about-project__article-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 40px;
   margin-bottom: 110px;
 }
 
-.about__article-title {
+.about-project__article-title {
   margin: 0 0 26px;
   padding: 0;
   color: #FFF;
@@ -22,7 +22,7 @@
   font-weight: normal;
 }
 
-.about__article-description {
+.about-project__article-description {
   margin: 0;
   padding: 0;
   color: #FFF;
@@ -31,13 +31,13 @@
   font-weight: normal;
 }
 
-.about__timing {
+.about-project__timing {
   display: grid;
   grid-template-columns: minmax(100px, 1fr) 4fr;
   row-gap: 4px;
 }
 
-.about__timing-block {
+.about-project__timing-block {
   margin: 0;
   padding: 10px 0;
   display: inline-block;
@@ -47,47 +47,47 @@
   text-align: center;
 }
 
-.about__backend-timing {
+.about-project__backend-timing {
   background-color: #3DDC84;
   color: #000;
 }
 
-.about__frontend-timing {
+.about-project__frontend-timing {
   background-color: #303030;
   color: #FFF;
 }
 
-.about__timing-title {
+.about-project__timing-title {
   color: #8B8B8B;
 }
 
 @media (max-width: 768px) {
-  .about__article-list {
+  .about-project__article-list {
     column-gap: 30px;
   }
 
-  .about__article-title {
+  .about-project__article-title {
     margin: 0 0 22px;
     font-size: 20px;
   }
 
-  .about__article-description {
+  .about-project__article-description {
     font-size: 12px;
   }
 }
 
 @media (max-width: 425px) {
-  .about__article-list {
+  .about-project__article-list {
     grid-template-columns: 1fr;
     row-gap: 56px;
   }
 
-  .about__article-title {
+  .about-project__article-title {
     margin: 0 0 16px;
     font-size: 18px;
   }
 
-  .about__article-description {
+  .about-project__article-description {
     font-size: 11px;
   }
 }

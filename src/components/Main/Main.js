@@ -1,17 +1,19 @@
 import React from 'react';
 import Promo from '../Promo/Promo';
-import About from '../About/About';
+import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
-import Student from '../Student/Student';
+import AboutStudent from '../AboutStudent/AboutStudent';
+import Portfolio from '../Portfolio/Portfolio';
 import './Main.css';
 
 export default function Main(props) {
   return (
     <main className="content">
       <Promo />
-      <About />
+      <AboutProject />
       <Techs />
-      <Student />
+      <AboutStudent />
+      <Portfolio />
     </main>
   )
 }
