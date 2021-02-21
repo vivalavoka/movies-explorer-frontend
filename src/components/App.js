@@ -7,6 +7,7 @@ import {
 import Header from './Header/Header';
 import Register from './Register/Register';
 import Login from './Login/Login';
+import Profile from './Profile/Profile';
 import NotFoundPage from './NotFoundPage/NotFoundPage';
 import Main from './Main/Main';
 import Footer from './Footer/Footer';
@@ -21,6 +22,10 @@ function App() {
         </Route>
         <Route path="/sign-in">
           <Login />
+        </Route>
+        <Route path="/profile" exact>
+          <Header isLoggedIn={false} />
+          <Profile />
         </Route>
         <Route path="/not-found">
           <NotFoundPage />
