@@ -21,6 +21,7 @@
   font-size: 20px;
   line-height: 1.2;
   font-weight: normal;
+  letter-spacing: -0.04em;
 }
 
 .about-project__article-description {
@@ -84,6 +85,10 @@
 @media (max-width: 540px) {
   .about-project {
     padding: 70px 0;
+  }
+
+  .about-project__title {
+    margin-bottom: 60px;
   }
 
   .about-project__article-list {

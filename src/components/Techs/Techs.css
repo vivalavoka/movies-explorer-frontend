@@ -58,7 +58,12 @@
 
 @media (max-width: 768px) {
   .techs {
+    background-color:#202020;
     padding: 90px 0;
+  }
+
+  .techs__title {
+    margin-bottom: 80px;
   }
 
   .techs__description {
@@ -69,6 +74,10 @@
 @media (max-width: 540px) {
   .techs {
     padding: 70px 0;
+  }
+
+  .techs__title {
+    margin-bottom: 60px;
   }
 
   .techs__subtitle {

@@ -95,5 +95,10 @@
 
   .promo__title {
     font-size: 30px;
+    letter-spacing: -0.04em;
+  }
+
+  .promo__description {
+    max-width: 260px;
   }
 }
