@@ -1,0 +1,41 @@
+.register {
+  width: 100vw;
+  height: 100vh;
+}
+
+.register__content {
+  padding-top: 70px;
+  max-width: 396px;
+  margin: auto;
+}
+
+.register__logo {
+  margin-bottom: 40px;
+}
+
+.register__welcome-text {
+  margin: 0;
+  padding: 0 0 40px;
+  color: #FFF;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.register__sign-in {
+  margin: 16px 0;
+  padding: 0;
+  text-align: center;
+  color: #8B8B8B;
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: normal;
+}
+
+.register__login-link {
+  text-decoration: none;
+  color: #4285F4;
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: normal;
+}
