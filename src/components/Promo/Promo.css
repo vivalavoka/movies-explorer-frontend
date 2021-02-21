@@ -1,15 +1,12 @@
 .promo {
   background-color: #073042;
+  padding: 75px 0;
 }
 
 .promo__content {
-  max-width: 1140px;
-  box-sizing: border-box;
-  margin: auto;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  padding: 75px 70px;
 }
 
 .promo__logo {

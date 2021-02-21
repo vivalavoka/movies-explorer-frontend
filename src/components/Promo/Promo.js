@@ -2,10 +2,11 @@ import React from 'react';
 import Button from '../Button/Button';
 import webEarth from '../../images/web-earth-min.svg'
 import './Promo.css';
+import SectionBlock from '../SectionBlock/SectionBlock';
 
 export default function Promo(props) {
   return (
-    <section className="promo">
+    <SectionBlock className="promo">
       <div className="promo__content">
         <img className="promo__logo" src={webEarth} alt="logo" />
         <div className="promo__info">
@@ -14,6 +15,6 @@ export default function Promo(props) {
           <Button className="promo__more" bordered={true} borderRadius="3">Узнать больше</Button>
         </div>
       </div>
-    </section>
+    </SectionBlock>
   )
 }
