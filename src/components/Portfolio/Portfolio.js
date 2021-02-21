@@ -9,8 +9,8 @@ export default function Portfolio(props) {
       <h3 className="portfolio__title">Портфолио</h3>
       <List className="portfolio__links" vertical={true}>
         <li className="portfolio__link-wrapper"><a className="portfolio__link" href="#">Статичный сайт<span className="portfolio__arrow"></span></a></li>
-        <li><a href="#">Адаптивный сайт</a></li>
-        <li><a href="#">Одностраничное приложение</a></li>
+        <li className="portfolio__link-wrapper"><a className="portfolio__link" href="#">Адаптивный сайт<span className="portfolio__arrow"></span></a></li>
+        <li className="portfolio__link-wrapper"><a className="portfolio__link" href="#">Одностраничное приложение<span className="portfolio__arrow"></span></a></li>
       </List>
     </SectionBlock>
   )

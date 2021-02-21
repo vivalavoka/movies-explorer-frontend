@@ -2,8 +2,44 @@
   background-color: #202020;
 }
 
+.portfolio__title {
+  margin: 0 0 50px;
+  padding: 0;
+  color: #A0A0A0;
+  font-size: 18px;
+  line-height: 1.1;
+  font-weight: normal;
+}
+
+.portfolio__link-wrapper {
+  width: 100%;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 20px;
+}
+
+.portfolio__link {
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding-bottom: 19px;
+  color: #FFF;
+  font-size: 28px;
+  line-height: 1.8;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+
 .portfolio__arrow {
-  background-image: url(../../images/arrow-min.svg);
+  padding: 0;
+  margin: 0;
+  background: url(../../images/arrow-min.svg) no-repeat;
+  background-position: center;
+  color: #A0A0A0;
+  height: 26px;
+  width: 26px;
 }
 
 @media (max-width: 768px) {
