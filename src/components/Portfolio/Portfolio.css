@@ -18,6 +18,10 @@
   margin-bottom: 20px;
 }
 
+.portfolio__link-wrapper:last-child {
+  margin-bottom: 0;
+}
+
 .portfolio__link {
   display: inline-flex;
   width: 100%;
@@ -44,6 +48,10 @@
 }
 
 @media (max-width: 768px) {
+  .portfolio {
+    padding-bottom: 90px;
+  }
+
   .portfolio__link {
     font-size: 28px;
   }
@@ -53,8 +61,11 @@
   }
 }
 
+@media (max-width: 540px) {
+  .portfolio {
+    padding-bottom: 70px;
+  }
 
-@media (max-width: 550px) {
   .portfolio__title {
     font-size: 14px;
   }

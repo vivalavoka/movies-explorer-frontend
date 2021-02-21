@@ -78,6 +78,10 @@
 }
 
 @media (max-width: 768px) {
+  .student {
+    padding: 90px 0;
+  }
+
   .student__name {
     font-size: 40px;
   }
@@ -88,5 +92,11 @@
 
   .student__description {
     font-size: 12px;
+  }
+}
+
+@media (max-width: 540px) {
+  .student {
+    padding: 70px 0;
   }
 }

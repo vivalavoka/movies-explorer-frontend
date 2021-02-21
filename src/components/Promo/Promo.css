@@ -48,11 +48,14 @@
 }
 
 @media (max-width: 768px) {
+  .promo {
+    padding: 140px 0 76px;
+  }
+
   .promo__content {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 140px 0 76px;
   }
 
   .promo__logo {
@@ -80,7 +83,11 @@
   }
 }
 
-@media (max-width: 660px) {
+@media (max-width: 540px) {
+  .promo {
+    padding: 70px 0 30px;
+  }
+
   .promo__logo {
     width: 210px;
     height: 210px;

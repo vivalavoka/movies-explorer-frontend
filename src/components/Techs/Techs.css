@@ -57,12 +57,20 @@
 }
 
 @media (max-width: 768px) {
+  .techs {
+    padding: 90px 0;
+  }
+
   .techs__description {
     font-size: 12px;
   }
 }
 
 @media (max-width: 540px) {
+  .techs {
+    padding: 70px 0;
+  }
+
   .techs__subtitle {
     font-size: 30px;
   }
