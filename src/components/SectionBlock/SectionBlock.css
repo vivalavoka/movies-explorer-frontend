@@ -7,12 +7,12 @@
 
 @media (max-width: 768px) {
   .section__content {
-    padding: 90px 50px 0;
+    padding: 90px 50px;
   }
 }
 
 @media (max-width: 425px) {
   .section__content {
-    padding: 70px 18px 0;
+    padding: 70px 18px;
   }
 }
