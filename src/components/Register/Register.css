@@ -55,4 +55,12 @@
     text-align: center;
     margin-bottom: 80px;
   }
+
+  .register__sign-in {
+    font-size: 12px;
+  }
+
+  .register__login-link {
+    font-size: 12px;
+  }
 }

@@ -56,3 +56,9 @@
 .form__button {
   height: 45px;
 }
+
+@media (max-width: 540px) {
+  .form__button {
+    font-size: 12px;
+  }
+}
