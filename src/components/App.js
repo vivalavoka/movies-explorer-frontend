@@ -9,6 +9,7 @@ import Register from './Register/Register';
 import Login from './Login/Login';
 import Profile from './Profile/Profile';
 import NotFoundPage from './NotFoundPage/NotFoundPage';
+import SearchForm from './SearchForm/SearchForm';
 import Main from './Main/Main';
 import Footer from './Footer/Footer';
 import './App.css';
@@ -23,12 +24,16 @@ function App() {
         <Route path="/sign-in">
           <Login />
         </Route>
-        <Route path="/profile" exact>
+        <Route path="/not-found">
+          <NotFoundPage />
+        </Route>
+        <Route path="/profile">
           {/* <Header isLoggedIn={false} /> */}
           <Profile />
         </Route>
-        <Route path="/not-found">
-          <NotFoundPage />
+        <Route path="/films">
+          {/* <Header isLoggedIn={false} /> */}
+          <SearchForm />
         </Route>
         <Route path="/" exact>
           {/* <Header isLoggedIn={false} /> */}
