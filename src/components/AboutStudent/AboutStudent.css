@@ -21,8 +21,7 @@
 
 .student__photo {
   border-radius: 10px;
-  height: auto;
-  max-width: 270px;
+  max-height: 327px;
   object-position: center center;
   object-fit: cover;
 }
@@ -110,6 +109,8 @@
   }
 
   .student__photo {
+    max-height: none;
+    width: 100%;
     margin-bottom: 40px;
   }
 

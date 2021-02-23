@@ -24,14 +24,14 @@ function App() {
           <Login />
         </Route>
         <Route path="/profile" exact>
-          <Header isLoggedIn={false} />
+          {/* <Header isLoggedIn={false} /> */}
           <Profile />
         </Route>
         <Route path="/not-found">
           <NotFoundPage />
         </Route>
         <Route path="/" exact>
-          <Header isLoggedIn={false} />
+          {/* <Header isLoggedIn={false} /> */}
           <Main />
           <Footer />
         </Route>
