@@ -37,6 +37,11 @@ function App() {
           <Movies/>
           <Footer />
         </Route>
+        <Route path="/saved-movies">
+          {/* <Header isLoggedIn={false} /> */}
+          <Movies/>
+          <Footer />
+        </Route>
         <Route path="/" exact>
           {/* <Header isLoggedIn={false} /> */}
           <Main />

@@ -1,16 +1,13 @@
 import React from 'react';
-import { Route } from "react-router";
 import MovieCardList from '../MovieCardList/MovieCardList';
 import SearchForm from '../SearchForm/SearchForm';
-import './Movies.css';
+import './SavedMovies.css';
 
 import MovieCardPhoto_1 from '../../images/movie-card_1.png';
 import MovieCardPhoto_2 from '../../images/movie-card_2.png';
 import MovieCardPhoto_3 from '../../images/movie-card_3.png';
-import Button from '../Button/Button';
 
-
-export default function Movies(props) {
+export default function SavedMovies(props) {
   return (
     <section className="movies">
       <SearchForm className="movies__search-form" />
@@ -18,7 +15,7 @@ export default function Movies(props) {
           name: "В погоне за Бенкси",
           duration: "27 минут",
           photo: MovieCardPhoto_1,
-          state: "saved",
+          state: "delete",
         }, {
           name: "В погоне за Бенкси",
           duration: "27 минут",
@@ -28,12 +25,9 @@ export default function Movies(props) {
           name: "В погоне за Бенкси",
           duration: "27 минут",
           photo: MovieCardPhoto_3,
-          state: "toSave",
+          state: "delete",
         }]}
       />
-      <Route path="/movies">
-        <Button className="movies__more-btn" color="dark-gray" borderRadius="6">Ещё</Button>
-      </Route>
     </section>
   )
 };
