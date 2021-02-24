@@ -3,10 +3,8 @@ import './ToggleButton.css';
 /**
  *
  * @param {Object} props
- * @param {String} className proxy classnames
- * @param {boolean} bordered is bordered
- * @param {String} color green|dark-gray|blue|pink
- * @param {String} borderRadius 3|6|30|40
+ * @param {String} name input name
+ * @param {String} text button text
  */
 export default function ToggleButton(props) {
   return (

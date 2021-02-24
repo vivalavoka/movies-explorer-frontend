@@ -9,19 +9,22 @@ import Register from './Register/Register';
 import Login from './Login/Login';
 import Profile from './Profile/Profile';
 import NotFoundPage from './NotFoundPage/NotFoundPage';
-import SearchForm from './SearchForm/SearchForm';
+import MovieCard from './MovieCard/MovieCard';
 import Main from './Main/Main';
 import Footer from './Footer/Footer';
 import './App.css';
+
+import MovieCardPhoto from '../images/movie-card_1.png';
+
 
 function App() {
   return (
     <div className="app">
       <Switch>
-        <Route path="/sign-up">
+        <Route path="/signup">
           <Register />
         </Route>
-        <Route path="/sign-in">
+        <Route path="/signin">
           <Login />
         </Route>
         <Route path="/not-found">
@@ -31,9 +34,9 @@ function App() {
           {/* <Header isLoggedIn={false} /> */}
           <Profile />
         </Route>
-        <Route path="/films">
+        <Route path="/movies">
           {/* <Header isLoggedIn={false} /> */}
-          <SearchForm />
+          <MovieCard name="В погоне за Бенкси" duration="27 минут" photo={MovieCardPhoto} />
         </Route>
         <Route path="/" exact>
           {/* <Header isLoggedIn={false} /> */}
