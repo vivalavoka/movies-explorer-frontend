@@ -9,12 +9,10 @@ import Register from './Register/Register';
 import Login from './Login/Login';
 import Profile from './Profile/Profile';
 import NotFoundPage from './NotFoundPage/NotFoundPage';
-import MovieCard from './MovieCard/MovieCard';
+import Movies from './Movies/Movies';
 import Main from './Main/Main';
 import Footer from './Footer/Footer';
 import './App.css';
-
-import MovieCardPhoto from '../images/movie-card_1.png';
 
 
 function App() {
@@ -36,7 +34,8 @@ function App() {
         </Route>
         <Route path="/movies">
           {/* <Header isLoggedIn={false} /> */}
-          <MovieCard name="В погоне за Бенкси" duration="27 минут" photo={MovieCardPhoto} state="toSave"/>
+          <Movies/>
+          <Footer />
         </Route>
         <Route path="/" exact>
           {/* <Header isLoggedIn={false} /> */}
