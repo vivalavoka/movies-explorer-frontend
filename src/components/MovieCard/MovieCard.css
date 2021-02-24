@@ -55,7 +55,12 @@
   font-weight: normal;
 }
 
-.movie-card__jackdow-icon {
-  position: relative;
-  top: -2px;
+@media (max-width: 540px) {
+  .movie-card__title {
+    font-size: 12px;
+  }
+
+  .movie-card__duration {
+    font-size: 10px;
+  }
 }

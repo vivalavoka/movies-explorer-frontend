@@ -36,7 +36,7 @@ function App() {
         </Route>
         <Route path="/movies">
           {/* <Header isLoggedIn={false} /> */}
-          <MovieCard name="В погоне за Бенкси" duration="27 минут" photo={MovieCardPhoto} />
+          <MovieCard name="В погоне за Бенкси" duration="27 минут" photo={MovieCardPhoto} state="toSave"/>
         </Route>
         <Route path="/" exact>
           {/* <Header isLoggedIn={false} /> */}
