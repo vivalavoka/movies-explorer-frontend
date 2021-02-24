@@ -17,6 +17,7 @@
 
 .movie-card__title {
   margin: 0;
+  margin-right: 5px;
   padding: 0;
   color: #FFF;
   font-size: 15px;
@@ -35,6 +36,9 @@
 
 .movie-card__photo {
   object-position: center center;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
 }
 
 .movie-card__panel {
