@@ -12,16 +12,16 @@ function Login(props) {
         <Form btnText="Войти" btnClassName="">
           <label className="form__input-wrapper">
             <span className="form__input-placeholder">Email</span>
-            <input name="avatar-link" id="avatar-link" className="input form__input" type="email" required />
-            <span id="avatar-link-error" className="form__input-error"></span>
+            <input name="user-email" id="user-email" className="input form__input form__input_wrong" type="email" required />
+            <span id="user-email-error" className="form__input-error"></span>
           </label>
           <label className="form__input-wrapper">
             <span className="form__input-placeholder">Пароль</span>
-            <input name="avatar-link" id="avatar-link" className="input form__input" type="password" required />
-            <span id="avatar-link-error" className="form__input-error"></span>
+            <input name="user-password" id="user-password" className="input form__input" type="password" required />
+            <span id="user-password-error" className="form__input-error"></span>
           </label>
         </Form>
-        <p className="register__sign-in">Еще не зарегистрированы? <Link to="/sign-up" className="register__login-link">Регистрация</Link></p>
+        <p className="register__sign-in">Еще не зарегистрированы? <Link to="/signup" className="register__login-link">Регистрация</Link></p>
       </div>
     </section>
   );

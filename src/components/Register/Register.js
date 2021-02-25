@@ -12,21 +12,21 @@ function Register(props) {
         <Form btnText="Зарегистрироваться" btnClassName="">
           <label className="form__input-wrapper">
             <span className="form__input-placeholder">Имя</span>
-            <input name="avatar-link" id="avatar-link" className="input form__input" type="text" required />
-            <span id="avatar-link-error" className="form__input-error"></span>
+            <input name="user-name" id="user-name" className="input form__input" type="text" required />
+            <span id="user-name-error" className="form__input-error"></span>
           </label>
           <label className="form__input-wrapper">
             <span className="form__input-placeholder">Email</span>
-            <input name="avatar-link" id="avatar-link" className="input form__input" type="email" required />
-            <span id="avatar-link-error" className="form__input-error"></span>
+            <input name="user-email" id="user-email" className="input form__input" type="email" required />
+            <span id="user-email-error" className="form__input-error"></span>
           </label>
           <label className="form__input-wrapper">
             <span className="form__input-placeholder">Пароль</span>
-            <input name="avatar-link" id="avatar-link" className="input form__input" type="password" required />
-            <span id="avatar-link-error" className="form__input-error"></span>
+            <input name="user-password" id="user-password" className="input form__input" type="password" required />
+            <span id="user-password-error" className="form__input-error"></span>
           </label>
         </Form>
-        <p className="register__sign-in">Уже зарегистрированы? <Link to="/sign-in" className="register__login-link">Войти</Link></p>
+        <p className="register__sign-in">Уже зарегистрированы? <Link to="/signin" className="register__login-link">Войти</Link></p>
       </div>
     </section>
   );

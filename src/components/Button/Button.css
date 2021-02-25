@@ -10,6 +10,12 @@
   border: 0;
 }
 
+.button:disabled {
+  cursor: not-allowed;
+  background-color: #F8F8F8;
+  color: #C2C2C2;
+}
+
 .button_bordered {
   border: 1px solid #FFF;
 }
