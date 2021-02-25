@@ -17,7 +17,6 @@ function Profile(props) {
   }
 
   function saveProfileHandler() {
-    console.log('CLick');
     setProfileState(STATE.saving);
     setTimeout(() => {
       setProfileState(STATE.info);
