@@ -1,5 +1,5 @@
 .header {
-  max-width: 1140px;
+  max-width: 1280px;
   margin: auto;
   height: 74px;
   box-sizing: border-box;
@@ -73,7 +73,7 @@
 }
 
 .header__link_active {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .header__list {

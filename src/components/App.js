@@ -16,6 +16,7 @@ import './App.css';
 
 
 function App() {
+  const isLoggedIn = true;
   return (
     <div className="app">
       <Switch>
@@ -29,21 +30,21 @@ function App() {
           <NotFoundPage />
         </Route>
         <Route path="/profile">
-          {/* <Header isLoggedIn={false} /> */}
+          {/* <Header isLoggedIn={isLoggedIn} /> */}
           <Profile />
         </Route>
         <Route path="/movies">
-          {/* <Header isLoggedIn={false} /> */}
+          {/* <Header isLoggedIn={isLoggedIn} /> */}
           <Movies/>
           <Footer />
         </Route>
         <Route path="/saved-movies">
-          {/* <Header isLoggedIn={false} /> */}
+          {/* <Header isLoggedIn={isLoggedIn} /> */}
           <Movies/>
           <Footer />
         </Route>
         <Route path="/" exact>
-          {/* <Header isLoggedIn={false} /> */}
+          <Header isLoggedIn={isLoggedIn} />
           <Main />
           <Footer />
         </Route>

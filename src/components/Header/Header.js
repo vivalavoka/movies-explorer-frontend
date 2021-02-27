@@ -1,4 +1,4 @@
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import Button from '../Button/Button';
 import List from '../List/List';
@@ -25,13 +25,15 @@ export default function Headers(props) {
         </div>
       </div> */}
 
-      {isLoggedIn &&
+      {
+        isLoggedIn &&
         <nav className="header__navigation">
           <List>
             <li className="header__item"><a className="header__link header__link_active" href='#'>Фильмы</a></li>
             <li className="header__item"><a className="header__link" href='#'>Сохраненные фильмы</a></li>
           </List>
-        </nav>}
+        </nav>
+      }
 
       <div className="header__panel">
         {isLoggedIn
