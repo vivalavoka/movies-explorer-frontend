@@ -10,6 +10,14 @@
   align-items: center;
 }
 
+.header__color_gray {
+  background-color: #202020;
+}
+
+.header__color_green {
+  background-color: #073042;
+}
+
 .header__panel {
   display: flex;
   flex-direction: row;
@@ -32,28 +40,6 @@
 
 .header__signin {
   padding: 8px 20px;
-}
-
-.header__profile-button {
-  display: inline-flex;
-  align-items: center;
-  position: relative;
-  font-size: 13px;
-  line-height: 1;
-  font-weight: normal;
-  padding: 3px 3px 3px 11px;
-}
-
-.header__profile-icon {
-  padding: 0;
-  margin: 0;
-  margin-left: 7px;
-  background: url(../../images/profile-icon-min.svg) no-repeat;
-  background-position: center;
-  background-color: #313131;
-  border-radius: 50%;
-  height: 26px;
-  width: 26px;
 }
 
 .header__item {
@@ -84,93 +70,22 @@
   align-items: center;
 }
 
-.header__menu-btn {
-  display: none;
-}
-
-.header__menu-icon {
-  cursor: pointer;
-  display: none;
-}
-
-/* burger menu */
-.header__navicon {
-  background: #FFF;
-  display: block;
-  height: 3px;
-  position: relative;
-  /* transition: background .2s ease-out; */
-  width: 28px;
-}
-
-.header__navicon:before,
-.header__navicon:after {
-  background: #FFF;
-  content: '';
-  display: block;
-  height: 100%;
-  position: absolute;
-  /* transition: all .2s ease-out; */
-  width: 100%;
-}
-
-.header__navicon:before {
-  top: 7px;
-}
-
-.header__navicon:after {
-  top: -7px;
-}
-
-
 @media (max-width: 768px) {
-  .header__panel {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 90px;
-  }
-
-  .sidebar {
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 520px;
-    background-color:#202020;
+  .header {
+    padding: 0 30px;
   }
 
   .header__navigation {
-    margin-top: 160px;
-    display: flex;
-    flex-direction: column;
+    display: none;
   }
 
-  .header__item {
-    margin-right: 0;
-    margin-bottom: 28px;
+  .header__panel {
+    display: none;
   }
+}
 
-  .header__item:last-child {
-    margin-bottom: 0;
-  }
-
-  .header__link {
-    font-size: 18px;
-  }
-
-  .header__link_active {
-    font-weight: normal;
-    padding-bottom: 4px;
-    border-bottom: 2px solid #FFF;
-  }
-
-  .header__menu-icon {
-    display: block;
-    position: relative;
-    z-index: 2;
+@media (max-width: 540px) {
+  .header {
+    padding: 0 14px;
   }
 }

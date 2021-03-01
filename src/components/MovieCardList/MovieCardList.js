@@ -6,8 +6,8 @@ export default function MovieCardList(props) {
 
   return (
     <ul className={`${props.className} card-list`}>
-      {props.cards.map(({name, duration, photo, state}) => (
-        <li className="card-list__item">
+      {props.cards.map(({name, duration, photo, state}, index) => (
+        <li index={index} className="card-list__item">
           <MovieCard name={name} duration={duration} photo={photo} state={state} />
         </li>
       ))}

@@ -8,8 +8,8 @@ import Header from './Header/Header';
 import Register from './Register/Register';
 import Login from './Login/Login';
 import Profile from './Profile/Profile';
-import NotFoundPage from './NotFoundPage/NotFoundPage';
 import Movies from './Movies/Movies';
+import SavedMovies from './SavedMovies/SavedMovies';
 import Main from './Main/Main';
 import Footer from './Footer/Footer';
 import './App.css';
@@ -26,26 +26,20 @@ function App() {
         <Route path="/signin">
           <Login />
         </Route>
-        <Route path="/not-found">
-          <NotFoundPage />
-        </Route>
         <Route path="/profile">
-          {/* <Header isLoggedIn={isLoggedIn} /> */}
           <Profile />
         </Route>
-        <Route path="/movies">
-          {/* <Header isLoggedIn={isLoggedIn} /> */}
-          <Movies/>
-          <Footer />
-        </Route>
-        <Route path="/saved-movies">
-          {/* <Header isLoggedIn={isLoggedIn} /> */}
-          <Movies/>
-          <Footer />
-        </Route>
-        <Route path="/" exact>
-          <Header isLoggedIn={isLoggedIn} />
-          <Main />
+        <Route>
+          <Header isLoggedIn={isLoggedIn}/>
+          <Route path="/movies">
+            <Movies/>
+          </Route>
+          <Route path="/saved-movies">
+            <SavedMovies />
+          </Route>
+          <Route path="/" exact>
+            <Main />
+          </Route>
           <Footer />
         </Route>
       </Switch>
