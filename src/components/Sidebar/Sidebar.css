@@ -17,6 +17,7 @@
 
 .sidebar__overlay_hidden {
   opacity: 0;
+  visibility: hidden;
 }
 
 .sidebar__content {

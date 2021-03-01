@@ -13,26 +13,28 @@ function Header(props) {
   const { pathname } = props.location;
   return (
     <header className={`header ${pathname === '/' ? 'header__color_green' : 'header__color_gray'}`}>
-      <Logo />
+      <div className="header__content">
+        <Logo />
 
-      {isLoggedIn &&
-        <Sidebar />
-      }
+        {isLoggedIn &&
+          <Sidebar />
+        }
 
-      {isLoggedIn && <nav className="header__navigation">
-        <List>
-          <li className="header__item"><NavLink className="header__link" activeClassName="header__link_active" to="/movies">Фильмы</NavLink></li>
-          <li className="header__item"><NavLink className="header__link" activeClassName="header__link_active" to="/saved-movies">Сохраненные фильмы</NavLink></li>
-        </List>
-      </nav>}
+        {isLoggedIn && <nav className="header__navigation">
+          <List>
+            <li className="header__item"><NavLink className="header__link" activeClassName="header__link_active" to="/movies">Фильмы</NavLink></li>
+            <li className="header__item"><NavLink className="header__link" activeClassName="header__link_active" to="/saved-movies">Сохраненные фильмы</NavLink></li>
+          </List>
+        </nav>}
 
-      <div className="header__panel">
-        {isLoggedIn
-          ? <ProfileLink to="/profile" />
-          : <div>
-            <Link className="header__sign-button" to="/signup">Регистрация</Link>
-            <Link className="header__sign-button" to="/signin"><Button className="header__signin" color="green" borderRadius="3">Войти</Button></Link>
-          </div>}
+        <div className="header__panel">
+          {isLoggedIn
+            ? <ProfileLink to="/profile" />
+            : <div>
+              <Link className="header__sign-button" to="/signup">Регистрация</Link>
+              <Link className="header__sign-button" to="/signin"><Button className="header__signin" color="green" borderRadius="3">Войти</Button></Link>
+            </div>}
+        </div>
       </div>
     </header>
   );
