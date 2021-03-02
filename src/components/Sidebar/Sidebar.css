@@ -11,7 +11,7 @@
   z-index: 100;
   width: 100%;
   height: 100%;
-  transition: opacity .2s ease-out;
+  transition: all .2s ease-out;
   background: rgba(0, 0, 0, 0.3);
 }
 
@@ -32,7 +32,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: scroll;
+  overflow-y: auto;
 }
 
 .sidebar__content_hidden {
