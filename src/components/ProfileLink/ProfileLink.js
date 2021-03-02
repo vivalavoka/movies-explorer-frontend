@@ -5,7 +5,7 @@ import './ProfileLink.css';
 
 export default function ProfileLink(props) {
     return (
-        <Link {...props} className="profile-link">
+        <Link to={props.to} className={`${props.className} profile-link`}>
             <Button className="profile-link__button" borderRadius="40">Аккаунт<span className="profile-link__icon"></span></Button>
         </Link>
     );

@@ -7,6 +7,7 @@ import {
 import Header from './Header/Header';
 import Register from './Register/Register';
 import Login from './Login/Login';
+import NotFoundPage from './NotFoundPage/NotFoundPage';
 import Profile from './Profile/Profile';
 import Movies from './Movies/Movies';
 import SavedMovies from './SavedMovies/SavedMovies';
@@ -15,12 +16,15 @@ import Footer from './Footer/Footer';
 import './App.css';
 
 function App() {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
   return (
     <div className="app">
       <Switch>
         <Route path="/signup">
           <Register />
+        </Route>
+        <Route path="/notfound">
+          <NotFoundPage />
         </Route>
         <Route path="/signin">
           <Login />

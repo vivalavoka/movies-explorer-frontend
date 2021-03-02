@@ -8,6 +8,11 @@ import './Sidebar.css';
 export default function Sidebars(props) {
   const [sidebarOpened, setSidebarOpened] = React.useState(false);
 
+  React.useEffect(() => {
+    sidebarOpened ? document.body.style.overflow = 'hidden'
+    : document.body.style.overflow = 'unset';
+  }, [ sidebarOpened ]);
+
   function toggleSidebar() {
     return sidebarOpened ? closeSidebar() : openSidebar();
   }

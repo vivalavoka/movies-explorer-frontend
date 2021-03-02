@@ -10,7 +10,9 @@ export default function Form(props) {
 
   return (
     <form name={props.name} className="form" noValidate onSubmit={handleSubmit}>
-      {props.children}
+      <fieldset className="form__fieldset">
+        {props.children}
+      </fieldset>
       <Button className="form__button" color="blue" borderRadius="3" type="submit">{props.btnText}</Button>
     </form>
   )

@@ -79,7 +79,7 @@
     display: none;
   }
 
-  .header__panel {
+  .header__profile {
     display: none;
   }
 }
@@ -87,5 +87,10 @@
 @media (max-width: 540px) {
   .header__content {
     padding: 0 14px;
+  }
+
+  .header__sign-button {
+    font-size: 10px;
+    margin-right: 14px;
   }
 }

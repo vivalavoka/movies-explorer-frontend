@@ -16,9 +16,7 @@ function Header(props) {
       <div className="header__content">
         <Logo />
 
-        {isLoggedIn &&
-          <Sidebar />
-        }
+        {isLoggedIn && <Sidebar />}
 
         {isLoggedIn && <nav className="header__navigation">
           <List>
@@ -27,14 +25,12 @@ function Header(props) {
           </List>
         </nav>}
 
-        <div className="header__panel">
-          {isLoggedIn
-            ? <ProfileLink to="/profile" />
-            : <div>
-              <Link className="header__sign-button" to="/signup">Регистрация</Link>
-              <Link className="header__sign-button" to="/signin"><Button className="header__signin" color="green" borderRadius="3">Войти</Button></Link>
-            </div>}
-        </div>
+        {isLoggedIn
+          ? <ProfileLink className="header__profile" to="/profile" />
+          : <div className="header__panel">
+            <Link className="header__sign-button" to="/signup">Регистрация</Link>
+            <Link className="header__sign-button" to="/signin"><Button className="header__signin" color="green" borderRadius="3">Войти</Button></Link>
+          </div>}
       </div>
     </header>
   );
