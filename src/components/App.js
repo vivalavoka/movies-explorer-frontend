@@ -16,7 +16,7 @@ import Footer from './Footer/Footer';
 import './App.css';
 
 function App() {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
   return (
     <div className="app">
       <Switch>
@@ -27,6 +27,7 @@ function App() {
           <Login />
         </Route>
         <Route path="/profile">
+          <Header isLoggedIn={isLoggedIn}/>
           <Profile />
         </Route>
         <Route path="/movies">

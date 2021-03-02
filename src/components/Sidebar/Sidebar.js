@@ -38,7 +38,7 @@ export default function Sidebars(props) {
           <li className="sidebar__item"><NavLink className="sidebar__link" activeClassName="sidebar__link_active" to='/saved-movies' onClick={closeSidebar}>Сохраненные фильмы</NavLink></li>
         </List>
         <div className="sidebar__panel">
-          <ProfileLink to="/profile" />
+          <ProfileLink to="/profile" onClick={closeSidebar}/>
         </div>
       </div>
     </div>
