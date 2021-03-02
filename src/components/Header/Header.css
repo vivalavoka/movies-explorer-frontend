@@ -1,9 +1,6 @@
-.header__color_gray {
-  background-color: #202020;
-}
-
-.header__color_green {
-  background-color: #073042;
+.header {
+  position: relative;
+  z-index: 10;
 }
 
 .header__content {

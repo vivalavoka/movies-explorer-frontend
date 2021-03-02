@@ -1,6 +1,8 @@
 .promo {
+  position: relative;
+  top: -74px;
   background-color: #073042;
-  padding: 75px 0;
+  padding: calc(75px + 74px) 0;
 }
 
 .promo__content {
@@ -49,7 +51,7 @@
 
 @media (max-width: 768px) {
   .promo {
-    padding: 140px 0 76px;
+    padding: calc(140px + 74px) 0 76px;
   }
 
   .promo__content {
@@ -85,7 +87,7 @@
 
 @media (max-width: 540px) {
   .promo {
-    padding: 70px 0 30px;
+    padding: calc(70px + 74px) 0 30px;
   }
 
   .promo__logo {

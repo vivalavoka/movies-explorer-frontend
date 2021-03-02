@@ -5,7 +5,7 @@ import './AboutProject.css';
 
 export default function AboutProject(props) {
   return (
-    <SectionBlock className="about-project">
+    <SectionBlock id="about-project" className="about-project">
       <SectionTitle className="about-project__title" text='О проекте' />
       <div className="about-project__article-list">
         <article>

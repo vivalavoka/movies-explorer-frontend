@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink, withRouter } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import Button from '../Button/Button';
 import List from '../List/List';
@@ -8,11 +8,10 @@ import Sidebar from '../Sidebar/Sidebar';
 
 import './Header.css';
 
-function Header(props) {
+export default function Header(props) {
   const { isLoggedIn } = props;
-  const { pathname } = props.location;
   return (
-    <header className={`header ${pathname === '/' ? 'header__color_green' : 'header__color_gray'}`}>
+    <header className="header">
       <div className="header__content">
         <Logo />
 
@@ -35,5 +34,3 @@ function Header(props) {
     </header>
   );
 }
-
-export default withRouter(Header);

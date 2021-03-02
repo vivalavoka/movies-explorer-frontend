@@ -5,7 +5,7 @@ import './Techs.css';
 
 export default function Techs(props) {
   return (
-    <SectionBlock className="techs">
+    <SectionBlock id="techs" className="techs">
       <SectionTitle className="techs__title" text='Технологии' />
       <h3 className="techs__subtitle">7 Технологий</h3>
       <p className="techs__description">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>

@@ -7,7 +7,7 @@ import './AboutStudent.css';
 
 export default function AboutStudent(props) {
   return (
-    <SectionBlock className="student">
+    <SectionBlock id="about-student" className="student">
       <SectionTitle className="student__title" text='Студент' />
       <div className="student__content">
         <img className="student__photo" src={StudentPhoto} alt="Фотография студента" />
@@ -17,8 +17,8 @@ export default function AboutStudent(props) {
           <p className="student__description">Я родился и живу в Москве, закончил факультет программной инженерии МИРЭА.
 и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
           <List className="student__links">
-            <li className="student_link-wrapper"><a className="student__link" href="#">Facebook</a></li>
-            <li className="student_link-wrapper"><a className="student__link" href="#">Github</a></li>
+            <li className="student_link-wrapper"><a className="student__link" href="https://www.facebook.com/stardach" rel="noreferrer" target="_blank">Facebook</a></li>
+            <li className="student_link-wrapper"><a className="student__link" href="https://github.com/vivalavoka/" rel="noreferrer" target="_blank">Github</a></li>
           </List>
         </div>
       </div>
