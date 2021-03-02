@@ -23,28 +23,28 @@ function App() {
         <Route path="/signup">
           <Register />
         </Route>
-        <Route path="/notfound">
-          <NotFoundPage />
-        </Route>
         <Route path="/signin">
           <Login />
         </Route>
         <Route path="/profile">
           <Profile />
         </Route>
-        <Route>
+        <Route path="/movies">
           <Header isLoggedIn={isLoggedIn}/>
-          <Route path="/movies">
-            <Movies/>
-          </Route>
-          <Route path="/saved-movies">
-            <SavedMovies />
-          </Route>
-          <Route path="/" exact>
-            <Main />
-          </Route>
+          <Movies/>
           <Footer />
         </Route>
+        <Route path="/saved-movies">
+          <Header isLoggedIn={isLoggedIn}/>
+          <SavedMovies />
+          <Footer />
+        </Route>
+        <Route path="/" exact>
+          <Header isLoggedIn={isLoggedIn}/>
+          <Main />
+          <Footer />
+        </Route>
+        <Route component={NotFoundPage} />
       </Switch>
     </div>
   );
