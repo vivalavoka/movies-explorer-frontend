@@ -2,7 +2,6 @@ import React from 'react';
 import { Route } from "react-router";
 import MovieCardList from '../MovieCardList/MovieCardList';
 import SearchForm from '../SearchForm/SearchForm';
-import Preloader from '../Preloader/Preloader';
 import './Movies.css';
 
 import MovieCardPhoto_1 from '../../images/movie-card_1.png';
@@ -15,7 +14,6 @@ export default function Movies(props) {
   return (
     <section className="movies">
       <SearchForm className="movies__search-form" />
-      <Preloader />
       <MovieCardList className="movies__card-list" cards={[{
           name: "В погоне за Бенкси",
           duration: "27 минут",
