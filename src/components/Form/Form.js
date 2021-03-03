@@ -13,7 +13,10 @@ export default function Form(props) {
       <fieldset className="form__fieldset">
         {props.children}
       </fieldset>
-      <Button className="form__button" color="blue" borderRadius="3" type="submit">{props.btnText}</Button>
+      <fieldset className="form__fieldset">
+        <span id="api-error" className="form__api-error"></span>
+        <Button className="form__button" color="blue" borderRadius="3" type="submit">{props.btnText}</Button>
+      </fieldset>
     </form>
   )
 };

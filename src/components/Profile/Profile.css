@@ -81,7 +81,6 @@
 }
 
 .profile__error-msg {
-  visibility: hidden;
   display: inline-block;
   width: 100%;
   margin: 0;
@@ -91,10 +90,6 @@
   line-height: 1.1;
   text-align: center;
   font-weight: normal;
-}
-
-.profile__error-msg_visible {
-  visibility: visible;
 }
 
 @media (max-width: 540px) {
