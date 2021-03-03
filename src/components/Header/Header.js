@@ -19,8 +19,12 @@ export default function Header(props) {
 
         {isLoggedIn && <nav className="header__navigation">
           <List>
-            <li className="header__item"><NavLink className="header__link" activeClassName="header__link_active" to="/movies">Фильмы</NavLink></li>
-            <li className="header__item"><NavLink className="header__link" activeClassName="header__link_active" to="/saved-movies">Сохраненные фильмы</NavLink></li>
+            <li className="header__item">
+              <NavLink className="header__link" activeClassName="header__link_active" to="/movies">Фильмы</NavLink>
+            </li>
+            <li className="header__item">
+              <NavLink className="header__link" activeClassName="header__link_active" to="/saved-movies">Сохраненные фильмы</NavLink>
+            </li>
           </List>
         </nav>}
 
@@ -28,7 +32,9 @@ export default function Header(props) {
           ? <ProfileLink className="header__profile" to="/profile" />
           : <div className="header__panel">
             <Link className="header__sign-button" to="/signup">Регистрация</Link>
-            <Link className="header__sign-button" to="/signin"><Button className="header__signin" color="green" borderRadius="3">Войти</Button></Link>
+            <Link className="header__sign-button" to="/signin">
+              <Button className="header__signin" color="green" borderRadius="3">Войти</Button>
+            </Link>
           </div>}
       </div>
     </header>

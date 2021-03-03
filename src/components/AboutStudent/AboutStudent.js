@@ -3,6 +3,7 @@ import List from '../List/List';
 import SectionBlock from '../SectionBlock/SectionBlock';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import StudentPhoto from '../../images/portfolio-photo.jpg';
+import ExternalLink from '../ExternalLink/ExternalLink';
 import './AboutStudent.css';
 
 export default function AboutStudent(props) {
@@ -17,8 +18,8 @@ export default function AboutStudent(props) {
           <p className="student__description">Я родился и живу в Москве, закончил факультет программной инженерии МИРЭА.
 и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
           <List className="student__links">
-            <li className="student_link-wrapper"><a className="student__link" href="https://www.facebook.com/stardach" rel="noreferrer" target="_blank">Facebook</a></li>
-            <li className="student_link-wrapper"><a className="student__link" href="https://github.com/vivalavoka/" rel="noreferrer" target="_blank">Github</a></li>
+            <li className="student_link-wrapper"><ExternalLink className="student__link" href="https://www.facebook.com/stardach" text="Facebook"/></li>
+            <li className="student_link-wrapper"><ExternalLink className="student__link" href="https://github.com/vivalavoka/" text="Github"/></li>
           </List>
         </div>
       </div>

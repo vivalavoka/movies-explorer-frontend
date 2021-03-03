@@ -40,6 +40,10 @@
   font-weight: normal;
 }
 
+.register__login-link:hover {
+  opacity: 0.7;
+}
+
 @media (max-width: 768px) {
   .register__content {
     padding-top: 230px;

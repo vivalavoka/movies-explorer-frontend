@@ -60,6 +60,10 @@
   font-size: 18px;
 }
 
+.sidebar__link:hover {
+  opacity: 0.7;
+}
+
 .sidebar__link_active {
   font-weight: normal;
   padding-bottom: 4px;

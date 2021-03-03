@@ -1,3 +1,4 @@
+import ExternalLink from '../ExternalLink/ExternalLink';
 import './Footer.css';
 
 export default function Footer() {
@@ -7,9 +8,9 @@ export default function Footer() {
       <div className="footer__bottom">
         <p className="footer__copyright">&copy; {new Date().getFullYear()}</p>
         <ul className="footer__list">
-          <li className="footer__item"><a className="footer__link" href="https://praktikum.yandex.ru/" rel="noreferrer" target="_blank">Яндекс.Практикум</a></li>
-          <li className="footer__item"><a className="footer__link" href="https://github.com/vivalavoka/" rel="noreferrer" target="_blank">Github</a></li>
-          <li className="footer__item"><a className="footer__link" href="https://www.facebook.com/stardach" rel="noreferrer" target="_blank">Facebook</a></li>
+          <li className="footer__item"><ExternalLink className="footer__link" href="https://praktikum.yandex.ru/" text="Яндекс.Практикум"/></li>
+          <li className="footer__item"><ExternalLink className="footer__link" href="https://github.com/vivalavoka/" text="Github"/></li>
+          <li className="footer__item"><ExternalLink className="footer__link" href="https://www.facebook.com/stardach" text="Facebook"/></li>
         </ul>
       </div>
     </footer>
