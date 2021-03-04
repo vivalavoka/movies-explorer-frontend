@@ -9,7 +9,6 @@ import MovieCardPhoto_2 from '../../images/movie-card_2.png';
 import MovieCardPhoto_3 from '../../images/movie-card_3.png';
 import Button from '../Button/Button';
 
-
 export default function Movies(props) {
   return (
     <section className="movies">

@@ -4,6 +4,7 @@ import {
   withRouter,
 } from 'react-router-dom';
 
+import mainApi from '../utils/main-api';
 import Header from './Header/Header';
 import Register from './Register/Register';
 import Login from './Login/Login';
@@ -27,21 +28,21 @@ function App() {
           <Login />
         </Route>
         <Route path="/profile">
-          <Header isLoggedIn={isLoggedIn}/>
+          <Header isLoggedIn={isLoggedIn} />
           <Profile />
         </Route>
         <Route path="/movies">
-          <Header isLoggedIn={isLoggedIn}/>
-          <Movies/>
+          <Header isLoggedIn={isLoggedIn} />
+          <Movies />
           <Footer />
         </Route>
         <Route path="/saved-movies">
-          <Header isLoggedIn={isLoggedIn}/>
+          <Header isLoggedIn={isLoggedIn} />
           <SavedMovies />
           <Footer />
         </Route>
         <Route path="/" exact>
-          <Header isLoggedIn={isLoggedIn}/>
+          <Header isLoggedIn={isLoggedIn} />
           <Main />
           <Footer />
         </Route>
