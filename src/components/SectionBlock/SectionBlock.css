@@ -1,0 +1,18 @@
+.section__content {
+  max-width: 1280px;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 0 70px;
+}
+
+@media (max-width: 768px) {
+  .section__content {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 540px) {
+  .section__content {
+    padding: 0 18px;
+  }
+}

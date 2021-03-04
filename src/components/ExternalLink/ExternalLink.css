@@ -1,0 +1,8 @@
+.external-link {
+  text-decoration: none;
+  color: #FFF;
+}
+
+.external-link:hover {
+  opacity: 0.7;
+}
