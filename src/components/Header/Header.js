@@ -9,15 +9,15 @@ import Sidebar from '../Sidebar/Sidebar';
 import './Header.css';
 
 export default function Header(props) {
-  const { isLoggedIn } = props;
+  const { loggedIn } = props;
   return (
     <header className="header">
       <div className="header__content">
         <Logo />
 
-        {isLoggedIn && <Sidebar />}
+        {loggedIn && <Sidebar />}
 
-        {isLoggedIn && <nav className="header__navigation">
+        {loggedIn && <nav className="header__navigation">
           <List>
             <li className="header__item">
               <NavLink className="header__link" activeClassName="header__link_active" to="/movies">Фильмы</NavLink>
@@ -28,7 +28,7 @@ export default function Header(props) {
           </List>
         </nav>}
 
-        {isLoggedIn
+        {loggedIn
           ? <ProfileLink className="header__profile" to="/profile" />
           : <div className="header__panel">
             <Link className="header__sign-button" to="/signup">Регистрация</Link>
