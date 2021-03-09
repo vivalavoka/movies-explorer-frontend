@@ -25,11 +25,6 @@ class App extends React.PureComponent {
       loggedIn: false,
       currentUser: {},
     };
-    setTimeout(() => {
-      this.setState({
-        loggedIn: true,
-      })
-    }, 5000);
   }
 
   render() {
