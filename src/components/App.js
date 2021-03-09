@@ -5,6 +5,9 @@ import {
   withRouter,
 } from 'react-router-dom';
 
+import { moviesUrl } from '../utils/constants.js';
+import moviesApi from '../utils/movies-api';
+import mainApi from '../utils/main-api';
 import CurrentUserContext from '../contexts/CurrentUserContext.js';
 
 import Header from './Header/Header';
@@ -22,9 +25,60 @@ class App extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false,
+      loggedIn: true,
+      movies: [],
+      moviesLoading: false,
+      savedMovies: [],
+      savedMoviesLoading: false,
       currentUser: {},
     };
+    this.loadMovies = this.loadMovies.bind(this);
+    this.setMovies = this.setMovies.bind(this);
+  }
+
+  componentDidMount() {
+    this.loadMovies();
+  }
+
+  loadMovies() {
+    const movies = JSON.parse(localStorage.getItem('movies'));
+    if (movies) {
+      this.setMovies(movies);
+    } else {
+      this.setState({
+        moviesLoading: true,
+      }, () => {
+        moviesApi.getMovies()
+          .then(res => {
+            if (res) {
+              this.setMovies(res);
+              this.saveMovies(res);
+              this.setState({
+                moviesLoading: false,
+              })
+            }
+          })
+          .catch(err => {
+            console.error(err);
+          });
+      });
+    }
+  }
+
+  setMovies(movies) {
+    this.setState({
+      movies: movies.map((item) => ({
+        id: item.id,
+        name: '',
+        duration: item.duration,
+        photo: item.image && item.image.url ? `${moviesUrl}${item.image.url}` : null,
+        saved: this.state.movies.some(({ id }) => item.id === id),
+      })),
+    });
+  }
+
+  saveMovies(movies) {
+    localStorage.setItem('movies', JSON.stringify(movies));
   }
 
   render() {
@@ -44,12 +98,12 @@ class App extends React.PureComponent {
             </Route>
             <Route path="/movies">
               <Header loggedIn={this.state.loggedIn} />
-              <Movies />
+              <Movies cards={this.state.movies} isLoading={this.state.moviesLoading} />
               <Footer />
             </Route>
             <Route path="/saved-movies">
               <Header loggedIn={this.state.loggedIn} />
-              <SavedMovies />
+              <SavedMovies cards={this.state.savedMovies} isLoading={this.state.savedMoviesLoading} />
               <Footer />
             </Route>
             <Route path="/" exact>

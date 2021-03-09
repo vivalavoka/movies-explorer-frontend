@@ -36,6 +36,7 @@ export default function SearchForm(props) {
         <input name="search-text" id="search-text" className="search-form__text" placeholder="Фильм" type="text" required value={searchText} onChange={handleChange} />
         <Button className="search-form__button" color="blue" borderRadius="3" type="submit" disabled={!formValid}>Найти</Button>
       </div>
+      <span className="search-form__error-msg"></span>
       <div className="search-form__filters">
         <ToggleButton name="short-films" text="Короткометражки" checked={shortFilmsOnly} onChange={handleChange} />
       </div>

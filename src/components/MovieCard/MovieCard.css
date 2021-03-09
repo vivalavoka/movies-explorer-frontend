@@ -42,7 +42,7 @@
   object-position: center center;
   object-fit: cover;
   width: 100%;
-  height: auto;
+  height: 200px;
 }
 
 .movie-card__panel {
