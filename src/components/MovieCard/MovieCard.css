@@ -17,13 +17,14 @@
 
 .movie-card__title {
   margin: 0;
-  margin-right: 5px;
+  margin-right: 1rem;
   padding: 0;
   color: #FFF;
   font-size: 15px;
   line-height: 1.2;
   font-weight: 500;
-  max-width: 65%;
+  min-width: 0;
+  max-width: 80%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

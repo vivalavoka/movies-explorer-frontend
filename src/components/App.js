@@ -69,7 +69,7 @@ class App extends React.PureComponent {
     this.setState({
       movies: movies.map((item) => ({
         id: item.id,
-        name: '',
+        name: item.nameRU,
         duration: item.duration,
         photo: item.image && item.image.url ? `${moviesUrl}${item.image.url}` : null,
         saved: this.state.movies.some(({ id }) => item.id === id),

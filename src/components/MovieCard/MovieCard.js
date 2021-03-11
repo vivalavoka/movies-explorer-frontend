@@ -33,7 +33,7 @@ export default function MovieCard(props) {
     <div className="movie-card">
       <div className="movie-card__header">
         <h2 className="movie-card__title">{props.name}</h2>
-        <span className="movie-card__duration">{props.duration}</span>
+        <span className="movie-card__duration">{props.duration}&nbsp;минут</span>
       </div>
       <img className="movie-card__photo" src={props.photo} alt={props.name} />
       <div className="movie-card__panel">
