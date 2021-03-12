@@ -4,16 +4,14 @@ import MovieCard from '../MovieCard/MovieCard';
 import './MovieCardList.css';
 
 export default function MovieCardList(props) {
-
-  const cards = props.cards.slice(0, 10);
   return (
     <div className={props.className}>
       {
         props.isLoading
           ? <Preloader />
-          : cards.length
+          : props.cards.length
             ? <ul className="card-list">
-              {cards.map(({ name, duration, photo, state }, index) => (
+              {props.cards.map(({ name, duration, photo, state }, index) => (
                 <li key={index} className="card-list__item">
                   <MovieCard name={name} duration={duration} photo={photo} state={state} />
                 </li>

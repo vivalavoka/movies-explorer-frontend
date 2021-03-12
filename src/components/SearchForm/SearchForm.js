@@ -7,10 +7,11 @@ export default function SearchForm(props) {
   const [formValid, setFormValid] = React.useState(false);
   const [searchText, setSearchText] = React.useState('');
   const [shortFilmsOnly, setShortFilmsOnly] = React.useState(false);
+  const [currentFilter, setCurrentFilter] = React.useState({ text: '', shortFilmsOnly: false });
 
   React.useEffect(() => {
-    setFormValid(searchText.length !== 0);
-  }, [searchText]);
+    setFormValid(!(searchText === currentFilter.text && shortFilmsOnly === currentFilter.shortFilmsOnly));
+  }, [searchText, shortFilmsOnly, currentFilter]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -28,6 +29,12 @@ export default function SearchForm(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    const filter = {
+      text: searchText,
+      shortFilmsOnly,
+    };
+    props.onSubmit(filter);
+    setCurrentFilter(filter);
   }
 
   return (
