@@ -42,6 +42,8 @@ class App extends React.PureComponent {
     this.checkCardLimit = this.checkCardLimit.bind(this);
     this.setMovies = this.setMovies.bind(this);
     this.searchHandler = this.searchHandler.bind(this);
+    this.registerHandler = this.registerHandler.bind(this);
+    this.authHandler = this.authHandler.bind(this);
   }
 
   componentDidMount() {
@@ -131,16 +133,28 @@ class App extends React.PureComponent {
     });
   }
 
+  registerHandler({ name, email, password }) {
+    return mainApi.register(name, email, password);
+  }
+
+  authHandler({ email, password }) {
+    return mainApi.auth(email, password).then(() => {
+      return mainApi.getProfile().then(res => {
+        console.log('res: ', res);
+      })
+    })
+  }
+
   render() {
     return (
       <CurrentUserContext.Provider value={this.state.currentUser} >
         <div className="app">
           <Switch>
             <Route path="/signup">
-              <Register />
+              <Register onSubmit={this.registerHandler} />
             </Route>
             <Route path="/signin">
-              <Login />
+              <Login onSubmit={this.authHandler} />
             </Route>
             <Route path="/profile">
               <Header loggedIn={this.state.loggedIn} />

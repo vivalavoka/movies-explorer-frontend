@@ -3,13 +3,8 @@ import Button from '../Button/Button';
 import './Form.css';
 
 export default function Form(props) {
-
-  function handleSubmit(e) {
-    e.preventDefault();
-  }
-
   return (
-    <form name={props.name} className="form" noValidate onSubmit={handleSubmit}>
+    <form name={props.name} className="form" noValidate onSubmit={props.onSubmit}>
       <fieldset className="form__fieldset">
         {props.children}
       </fieldset>

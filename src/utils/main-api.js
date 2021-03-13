@@ -26,6 +26,7 @@ class Api extends BaseApi {
 
   logout() {
     return this._fetch(`${this._baseUrl}/signout`, {
+      credentials: 'include',
       method: 'GET',
       headers: {
         ...this._headers,
@@ -36,6 +37,7 @@ class Api extends BaseApi {
 
   getProfile() {
     return this._fetch(`${this._baseUrl}/users/me`, {
+      credentials: 'include',
       method: 'GET',
       headers: {
         ...this._headers,
@@ -46,6 +48,7 @@ class Api extends BaseApi {
 
   updateProfile(name, email) {
     return this._fetch(`${this._baseUrl}/users/me`, {
+      credentials: 'include',
       method: 'PATCH',
       headers: {
         ...this._headers,
@@ -57,6 +60,7 @@ class Api extends BaseApi {
 
   getSavedMovies() {
     return this._fetch(`${this._baseUrl}/movies`, {
+      credentials: 'include',
       method: 'GET',
       headers: {
         ...this._headers,
@@ -67,6 +71,7 @@ class Api extends BaseApi {
 
   saveMovie(movie) {
     return this._fetch(`${this._baseUrl}/movies`, {
+      credentials: 'include',
       method: 'POST',
       headers: {
         ...this._headers,
@@ -78,6 +83,7 @@ class Api extends BaseApi {
 
   deleteMovie(movieId) {
     return this._fetch(`${this._baseUrl}/movies/${movieId}`, {
+      credentials: 'include',
       method: 'DELETE',
     });
   }
