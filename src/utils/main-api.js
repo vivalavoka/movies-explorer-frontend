@@ -4,6 +4,7 @@ import BaseApi from './base-api.js';
 class Api extends BaseApi {
   register(name, email, password) {
     return this._fetch(`${this._baseUrl}/signup`, {
+      credentials: 'include',
       method: 'POST',
       headers: {
         ...this._headers,
@@ -15,6 +16,7 @@ class Api extends BaseApi {
 
   auth(email, password) {
     return this._fetch(`${this._baseUrl}/signin`, {
+      credentials: 'include',
       method: 'POST',
       headers: {
         ...this._headers,
