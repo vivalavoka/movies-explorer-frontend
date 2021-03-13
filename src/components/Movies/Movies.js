@@ -36,7 +36,7 @@ export default function Movies(props) {
         photo: card.photo,
         state: card.saved ? movieCardStates.saved : movieCardStates.to_save,
       }))} />
-      {props.cards.length ? <Button className="movies__more-btn" color="dark-gray" borderRadius="6" onClick={moreCardsHandler}>Ещё</Button> : null}
+      {limitedCards.length >= curCount ? <Button className="movies__more-btn" color="dark-gray" borderRadius="6" onClick={moreCardsHandler}>Ещё</Button> : null}
     </section>
   )
 };
