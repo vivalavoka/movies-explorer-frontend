@@ -20,12 +20,15 @@ import Movies from './Movies/Movies';
 import SavedMovies from './SavedMovies/SavedMovies';
 import Main from './Main/Main';
 import Footer from './Footer/Footer';
+import { cardLimit } from '../utils/constants';
 import './App.css';
+
 class App extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       loggedIn: true,
+      cardLimit: {},
       movies: [],
       findedMovies: [],
       moviesLoading: false,
@@ -35,12 +38,47 @@ class App extends React.PureComponent {
       currentUser: {},
     };
     this.loadMovies = this.loadMovies.bind(this);
+    this.setResizeEventHandler = this.setResizeEventHandler.bind(this);
+    this.checkCardLimit = this.checkCardLimit.bind(this);
     this.setMovies = this.setMovies.bind(this);
     this.searchHandler = this.searchHandler.bind(this);
   }
 
   componentDidMount() {
     this.loadMovies();
+    this.checkCardLimit();
+    this.setResizeEventHandler();
+  }
+
+  setResizeEventHandler() {
+    var resizeTimeout;
+    const resizeThrottler = () => {
+      if (!resizeTimeout) {
+        resizeTimeout = setTimeout(() => {
+          resizeTimeout = null;
+          this.checkCardLimit();
+        }, 66);
+      }
+    }
+
+    window.addEventListener('resize', resizeThrottler, false);
+  }
+
+  checkCardLimit() {
+    const windowWith = window.screen.width;
+    if (windowWith < cardLimit.medium.minSize) {
+      this.setState({
+        cardLimit: cardLimit.small,
+      });
+    } else if (windowWith < cardLimit.big.minSize) {
+      this.setState({
+        cardLimit: cardLimit.medium,
+      });
+    } else {
+      this.setState({
+        cardLimit: cardLimit.big,
+      });
+    }
   }
 
   loadMovies() {
@@ -110,7 +148,7 @@ class App extends React.PureComponent {
             </Route>
             <Route path="/movies">
               <Header loggedIn={this.state.loggedIn} />
-              <Movies cards={this.state.findedMovies} searchHandler={this.searchHandler} isLoading={this.state.moviesLoading} />
+              <Movies cards={this.state.findedMovies} searchHandler={this.searchHandler} cardLimit={this.state.cardLimit} isLoading={this.state.moviesLoading} />
               <Footer />
             </Route>
             <Route path="/saved-movies">

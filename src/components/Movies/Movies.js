@@ -7,16 +7,36 @@ import './Movies.css';
 import Button from '../Button/Button';
 
 export default function Movies(props) {
+  const [curCount, setCurCount] = React.useState(props.cardLimit.count);
+  const [limitedCards, setLimitedCards] = React.useState([]);
+
+  const { cardLimit, cards } = props;
+
+  React.useEffect(() => {
+    if (curCount) {
+      setLimitedCards(cards.slice(0, curCount));
+    }
+  }, [curCount, cards]);
+
+  if (!curCount && cardLimit.count) {
+    setCurCount(cardLimit.count);
+  }
+
+  function moreCardsHandler() {
+    setCurCount(curCount + cardLimit.more);
+    setLimitedCards(cards.slice(0, curCount));
+  }
+
   return (
     <section className="movies">
       <SearchForm className="movies__search-form" onSubmit={props.searchHandler} />
-      <MovieCardList className="movies__card-list" isLoading={props.isLoading} cards={props.cards.map((card) => ({
+      <MovieCardList className="movies__card-list" isLoading={props.isLoading} cards={limitedCards.map((card) => ({
         name: card.name,
         duration: card.duration,
         photo: card.photo,
         state: card.saved ? movieCardStates.saved : movieCardStates.to_save,
       }))} />
-      {props.cards.length ? <Button className="movies__more-btn" color="dark-gray" borderRadius="6">Ещё</Button> : null}
+      {props.cards.length ? <Button className="movies__more-btn" color="dark-gray" borderRadius="6" onClick={moreCardsHandler}>Ещё</Button> : null}
     </section>
   )
 };
