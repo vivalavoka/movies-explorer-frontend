@@ -11,9 +11,9 @@ export default function MovieCardList(props) {
           ? <Preloader />
           : props.cards.length
             ? <ul className="card-list">
-              {props.cards.map(({ name, duration, photo, state }, index) => (
+              {props.cards.map((card, index) => (
                 <li key={index} className="card-list__item">
-                  <MovieCard name={name} duration={duration} photo={photo} state={state} />
+                  <MovieCard {...card} onSave={props.onSaveMovie} />
                 </li>
               ))}
             </ul>

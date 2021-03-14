@@ -24,11 +24,6 @@ function Login(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log({
-      email: userEmail,
-      password: userPassword,
-    });
-
     props.onSubmit({
       email: userEmail,
       password: userPassword,

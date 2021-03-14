@@ -31,11 +31,12 @@ export default function Movies(props) {
     <section className="movies">
       <SearchForm className="movies__search-form" onSubmit={props.searchHandler} />
       <MovieCardList className="movies__card-list" isLoading={props.isLoading} cards={limitedCards.map((card) => ({
-        name: card.name,
+        id: card.id,
+        name: card.nameRU,
         duration: card.duration,
-        photo: card.photo,
+        image: card.image,
         state: card.saved ? movieCardStates.saved : movieCardStates.to_save,
-      }))} />
+      }))} onSaveMovie={props.onSaveMovie} />
       {limitedCards.length >= curCount ? <Button className="movies__more-btn" color="dark-gray" borderRadius="6" onClick={moreCardsHandler}>Ещё</Button> : null}
     </section>
   )

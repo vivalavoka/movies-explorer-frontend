@@ -1,4 +1,7 @@
 import React from 'react';
+
+import CurrentUserContext from '../../contexts/CurrentUserContext.js';
+
 import Button from '../Button/Button';
 import List from '../List/List';
 import './Profile.css';
@@ -11,7 +14,7 @@ const STATE = {
 
 function Profile(props) {
   const [profileState, setProfileState] = React.useState(STATE.info);
-
+  const currentUser = React.useContext(CurrentUserContext);
   function editProfileHandler() {
     setProfileState(STATE.edit);
   }
@@ -26,10 +29,10 @@ function Profile(props) {
   return (
     <section className="profile">
       <div className="profile__content">
-        <h1 className="profile__welcome-text">Привет, Виталий!</h1>
+        <h1 className="profile__welcome-text">Привет, {currentUser.name}!</h1>
         <List className="profile__info-list" vertical={true}>
-          <li className="profile__info-item"><span className="profile__info-key">Имя</span><span className="profile__info-value">Виталий</span></li>
-          <li className="profile__info-item"><span className="profile__info-key">Почта</span><span className="profile__info-value">ex@mple.com</span></li>
+          <li className="profile__info-item"><span className="profile__info-key">Имя</span><span className="profile__info-value">{currentUser.name}</span></li>
+          <li className="profile__info-item"><span className="profile__info-key">Почта</span><span className="profile__info-value">{currentUser.email}</span></li>
         </List>
         {profileState === STATE.info
           ? <List vertical={true}>
