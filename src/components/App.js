@@ -12,6 +12,7 @@ import cardFilter from '../utils/card-filter';
 import CurrentUserContext from '../contexts/CurrentUserContext';
 
 import Header from './Header/Header';
+import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import Register from './Register/Register';
 import Login from './Login/Login';
 import NotFoundPage from './NotFoundPage/NotFoundPage';
@@ -27,7 +28,7 @@ class App extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: true,
+      loggedIn: false,
       cardLimit: {},
       movies: [],
       findedMovies: [],
@@ -156,20 +157,20 @@ class App extends React.PureComponent {
             <Route path="/signin">
               <Login onSubmit={this.authHandler} />
             </Route>
-            <Route path="/profile">
+            <ProtectedRoute path="/profile" loggedIn={this.state.loggedIn}>
               <Header loggedIn={this.state.loggedIn} />
               <Profile />
-            </Route>
-            <Route path="/movies">
+            </ProtectedRoute>
+            <ProtectedRoute path="/movies" loggedIn={this.state.loggedIn}>
               <Header loggedIn={this.state.loggedIn} />
               <Movies cards={this.state.findedMovies} searchHandler={this.searchHandler} cardLimit={this.state.cardLimit} isLoading={this.state.moviesLoading} />
               <Footer />
-            </Route>
-            <Route path="/saved-movies">
+            </ProtectedRoute>
+            <ProtectedRoute path="/saved-movies" loggedIn={this.state.loggedIn}>
               <Header loggedIn={this.state.loggedIn} />
               <SavedMovies cards={this.state.findedSavedMovies} searchHandler={this.searchHandler} isLoading={this.state.savedMoviesLoading} />
               <Footer />
-            </Route>
+            </ProtectedRoute>
             <Route path="/" exact>
               <Header loggedIn={this.state.loggedIn} />
               <Main />
