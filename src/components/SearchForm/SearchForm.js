@@ -40,7 +40,7 @@ export default function SearchForm(props) {
   return (
     <form name={props.name} className={`${props.className} search-form`} noValidate onSubmit={handleSubmit}>
       <div className="search-form__main-fieldset">
-        <input name="search-text" id="search-text" className="search-form__text" placeholder="Фильм" type="text" required value={searchText} onChange={handleChange} />
+        <input name="search-text" id="search-text" className="search-form__text" placeholder="Фильм" type="search" required value={searchText} onChange={handleChange} />
         <Button className="search-form__button" color="blue" borderRadius="3" type="submit" disabled={!formValid}>Найти</Button>
       </div>
       <span className="search-form__error-msg"></span>

@@ -36,7 +36,7 @@ class App extends React.PureComponent {
         code: null,
         message: '',
       },
-      loggedIn: false,
+      loggedIn: true,
       cardLimit: {},
       movies: [],
       findedMovies: [],
@@ -59,6 +59,8 @@ class App extends React.PureComponent {
     this.searchHandler = this.searchHandler.bind(this);
     this.registerHandler = this.registerHandler.bind(this);
     this.authHandler = this.authHandler.bind(this);
+    this.updateProfileHandler = this.updateProfileHandler.bind(this);
+    this.logoutHandler = this.logoutHandler.bind(this);
     this.saveMovieHandler = this.saveMovieHandler.bind(this);
     this.deleteMovieHandler = this.deleteMovieHandler.bind(this);
     this.catcher = ErrorHandler(this.openTootlipHandler);
@@ -88,8 +90,7 @@ class App extends React.PureComponent {
           savedMoviesLoading: false,
         });
         return this.searchHandler({ text: '' });
-      })
-      .catch(this.catcher);
+      });
   }
 
   closeTootlipHandler() {
@@ -245,6 +246,25 @@ class App extends React.PureComponent {
       .catch(this.catcher);
   }
 
+  updateProfileHandler({ name = null, email = null }) {
+    return mainApi.updateProfile(name, email)
+      .then(() => {
+        return mainApi.getProfile();
+      })
+      .then(res => {
+        this.setCurrentUser(res);
+      })
+      .catch(this.catcher);
+  }
+
+  logoutHandler() {
+    return mainApi.logout()
+      .then(() => {
+        this.props.history.push('/signin');
+      })
+      .catch(this.catcher);
+  }
+
   saveMovieHandler(movieId) {
     const { id, saved, ...movie } = this.state.movies.find(({ id }) => id === movieId);
     return mainApi.saveMovie({
@@ -271,7 +291,7 @@ class App extends React.PureComponent {
             </Route>
             <ProtectedRoute path="/profile" loggedIn={this.state.loggedIn}>
               <Header loggedIn={this.state.loggedIn} />
-              <Profile />
+              <Profile onLogout={this.logoutHandler} onSubmit={this.updateProfileHandler} />
             </ProtectedRoute>
             <ProtectedRoute path="/movies" loggedIn={this.state.loggedIn}>
               <Header loggedIn={this.state.loggedIn} />
