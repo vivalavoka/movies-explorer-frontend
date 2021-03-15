@@ -270,7 +270,14 @@ class App extends React.PureComponent {
     return mainApi.saveMovie({
       ...movie,
       movieId: id,
-    }).catch(this.catcher);
+    })
+      .then(() => {
+        return this.loadSavedMovies();
+      })
+      .then(() => {
+        return this.loadMovies();
+      })
+      .catch(this.catcher);
   }
 
   deleteMovieHandler(movieId) {

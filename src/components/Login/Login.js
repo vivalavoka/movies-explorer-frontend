@@ -40,7 +40,7 @@ function Login(props) {
         <Form btnText="Войти" btnClassName="" onSubmit={handleSubmit}>
           <label className="form__input-wrapper">
             <span className="form__input-placeholder">Email</span>
-            <input name="user-email" id="user-email" className="input form__input form__input_wrong" type="email" required onChange={handleChange} />
+            <input name="user-email" id="user-email" className="input form__input" type="email" required onChange={handleChange} />
             <span id="user-email-error" className="form__input-error"></span>
           </label>
           <label className="form__input-wrapper">
