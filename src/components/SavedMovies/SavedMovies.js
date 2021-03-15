@@ -15,6 +15,7 @@ export default function SavedMovies(props) {
           name: card.nameRU,
           duration: card.duration,
           image: card.image,
+          trailer: card.trailer,
           state: movieCardStates.delete,
         }))}
         onDeleteMovie={props.onDeleteMovie}

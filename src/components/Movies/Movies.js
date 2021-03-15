@@ -37,6 +37,7 @@ export default function Movies(props) {
           name: card.nameRU,
           duration: card.duration,
           image: card.image,
+          trailer: card.trailer,
           state: card.saved ? movieCardStates.saved : movieCardStates.to_save,
         }))}
         onSaveMovie={props.onSaveMovie}

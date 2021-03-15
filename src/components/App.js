@@ -168,7 +168,7 @@ class App extends React.PureComponent {
           duration: item.duration,
           description: item.description,
           image: url ? `${moviesUrl}${url}` : null,
-          trailer: item.trailerLink ? `${moviesUrl}${item.trailerLink}` : null,
+          trailer: item.trailerLink,
           thumbnail: formats && formats.thumbnail && formats.thumbnail.url ? `${moviesUrl}${formats.thumbnail.ur}` : null,
           saved: this.state.savedMovies.some(({ movieId }) => item.id === movieId),
         };

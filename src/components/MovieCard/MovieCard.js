@@ -1,6 +1,7 @@
 import React from 'react';
 import DeleteIcon from '../../images/delete-icon-min.svg';
 import JackdowIcon from '../../images/jackdow-min.svg';
+import ExternalLink from '../ExternalLink/ExternalLink';
 import Button from '../Button/Button';
 import { movieCardStates } from '../../utils/constants';
 import './MovieCard.css';
@@ -49,7 +50,7 @@ export default function MovieCard(props) {
         <h2 className="movie-card__title">{props.name}</h2>
         <span className="movie-card__duration">{props.duration}&nbsp;минут</span>
       </div>
-      <img className="movie-card__photo" src={props.image} alt={props.name} />
+      <ExternalLink href={props.trailer}><img className="movie-card__photo" src={props.image} alt={props.name} /></ExternalLink>
       <div className="movie-card__panel">
         <Button className="movie-card__save-btn" color={color} borderRadius="30" onClick={onClickHandler}>
           {content}
