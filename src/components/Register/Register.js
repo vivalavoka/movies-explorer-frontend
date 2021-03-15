@@ -32,11 +32,6 @@ function Register(props) {
       name: userName,
       email: userEmail,
       password: userPassword,
-    }).then(() => {
-      setUserName('');
-      setUserEmail('');
-      setUserPassword('');
-      props.history.push('/signin');
     });
   }
 

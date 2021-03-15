@@ -23,6 +23,7 @@ import Main from './Main/Main';
 import Tooltip from './Tooltip/Tooltip';
 import Footer from './Footer/Footer';
 import { cardLimit } from '../utils/constants';
+import ErrorHandler from '../utils/error-handler';
 import './App.css';
 
 class App extends React.PureComponent {
@@ -35,7 +36,7 @@ class App extends React.PureComponent {
         code: null,
         message: '',
       },
-      loggedIn: true,
+      loggedIn: false,
       cardLimit: {},
       movies: [],
       findedMovies: [],
@@ -45,6 +46,7 @@ class App extends React.PureComponent {
       savedMoviesLoading: false,
       currentUser: {},
     };
+    this.initialize = this.initialize.bind(this);
     this.closeTootlipHandler = this.closeTootlipHandler.bind(this);
     this.openTootlipHandler = this.openTootlipHandler.bind(this);
     this.checkToken = this.checkToken.bind(this);
@@ -59,37 +61,35 @@ class App extends React.PureComponent {
     this.authHandler = this.authHandler.bind(this);
     this.saveMovieHandler = this.saveMovieHandler.bind(this);
     this.deleteMovieHandler = this.deleteMovieHandler.bind(this);
+    this.catcher = ErrorHandler(this.openTootlipHandler);
   }
 
   componentDidMount() {
     this.checkCardLimit();
     this.setResizeEventHandler();
-    this.checkToken()
+    this.initialize();
+  }
+
+  initialize() {
+    return this.checkToken()
       .then(() => {
         this.setState({
           moviesLoading: true,
           savedMoviesLoading: true,
         });
-        return Promise.resolve();
-      })
-      .then(() => {
         return this.loadSavedMovies();
       })
       .then(() => {
         return this.loadMovies();
       })
       .then(() => {
-        return this.searchHandler({ text: '' });
-      })
-      .then(() => {
         this.setState({
           moviesLoading: false,
           savedMoviesLoading: false,
         });
+        return this.searchHandler({ text: '' });
       })
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch(this.catcher);
   }
 
   closeTootlipHandler() {
@@ -121,9 +121,6 @@ class App extends React.PureComponent {
         this.setState({ loggedIn: true });
         this.props.history.push('/');
         return Promise.resolve();
-      })
-      .catch(err => {
-        console.error(err);
       });
   }
 
@@ -160,6 +157,7 @@ class App extends React.PureComponent {
     const movies = JSON.parse(localStorage.getItem('movies'));
     if (movies) {
       this.setMovies(movies);
+      return Promise.resolve();
     } else {
       return moviesApi.getMovies()
         .then(res => {
@@ -167,7 +165,7 @@ class App extends React.PureComponent {
             this.setMovies(res);
             this.saveMovies(res);
           }
-        })
+        });
     }
   }
 
@@ -177,9 +175,6 @@ class App extends React.PureComponent {
         if (res) {
           this.setSavedMovies(res);
         }
-      })
-      .catch(err => {
-        console.error(err);
       });
   }
 
@@ -207,7 +202,7 @@ class App extends React.PureComponent {
     });
   }
 
-  setSavedMovies(savedMovies) {
+  setSavedMovies(savedMovies = []) {
     this.setState({
       savedMovies,
     });
@@ -235,14 +230,19 @@ class App extends React.PureComponent {
   }
 
   registerHandler({ name, email, password }) {
-    return mainApi.register(name, email, password);
+    return mainApi.register(name, email, password)
+      .then(() => {
+        this.props.history.push('/signin');
+      })
+      .catch(this.catcher);
   }
 
   authHandler({ email, password }) {
     return mainApi.auth(email, password)
       .then(() => {
-        this.checkToken();
-      });
+        return this.initialize();
+      })
+      .catch(this.catcher);
   }
 
   saveMovieHandler(movieId) {
@@ -250,11 +250,12 @@ class App extends React.PureComponent {
     return mainApi.saveMovie({
       ...movie,
       movieId: id,
-    });
+    }).catch(this.catcher);
   }
 
   deleteMovieHandler(movieId) {
-    return mainApi.deleteMovie(movieId);
+    return mainApi.deleteMovie(movieId)
+      .catch(this.catcher);
   }
 
   render() {

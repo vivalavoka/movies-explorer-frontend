@@ -24,13 +24,11 @@ function Login(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    setUserEmail('');
+    setUserPassword('');
     props.onSubmit({
       email: userEmail,
       password: userPassword,
-    }).then(() => {
-      setUserEmail('');
-      setUserPassword('');
-      props.history.push('/');
     });
   }
 

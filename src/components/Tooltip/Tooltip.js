@@ -17,9 +17,10 @@ function getTitle(type) {
 }
 
 export default function Tooltip(props) {
-  const isOpenned = props.isOpen && props.type && props.message;
+  const isOpenned = props.isOpen && props.type;
   const title = getTitle(props.type);
 
+  const message = props.message || 'Что-то пошло не так';
   return (
     <div className={`tooltip tooltip_theme_${props.type} ${isOpenned && 'tooltip_opened'}`}>
       <div className={`tooltip__header tooltip__header_theme_${props.type}`}>
@@ -27,7 +28,7 @@ export default function Tooltip(props) {
       </div>
       <div className="tooltip__body">
         {props.code && <span className="tooltip__code">Code: {props.code}</span>}
-        <p className="tooltip__message">{props.message}</p>
+        <p className="tooltip__message">{message}</p>
         <Button className="tooltip__btn" bordered borderRadius="40" onClick={props.onClose}>Закрыть</Button>
       </div>
     </div>

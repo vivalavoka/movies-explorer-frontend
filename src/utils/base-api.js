@@ -10,7 +10,15 @@ class Api {
         if (res.ok) {
           return res.json();
         }
-        return Promise.reject(`${res.statusText}: ${res.status}`);
+        return res.json()
+          .catch((err) => Promise.reject({
+            code: res.status,
+            message: err.message,
+          }))
+          .then(({ message }) => Promise.reject({
+            code: res.status,
+            message,
+          }))
       });
   }
 }
