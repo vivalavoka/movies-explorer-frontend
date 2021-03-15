@@ -20,6 +20,7 @@ import Profile from './Profile/Profile';
 import Movies from './Movies/Movies';
 import SavedMovies from './SavedMovies/SavedMovies';
 import Main from './Main/Main';
+import Tooltip from './Tooltip/Tooltip';
 import Footer from './Footer/Footer';
 import { cardLimit } from '../utils/constants';
 import './App.css';
@@ -28,7 +29,13 @@ class App extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false,
+      isTooltipOpen: false,
+      tooltipData: {
+        type: '',
+        code: null,
+        message: '',
+      },
+      loggedIn: true,
       cardLimit: {},
       movies: [],
       findedMovies: [],
@@ -38,6 +45,8 @@ class App extends React.PureComponent {
       savedMoviesLoading: false,
       currentUser: {},
     };
+    this.closeTootlipHandler = this.closeTootlipHandler.bind(this);
+    this.openTootlipHandler = this.openTootlipHandler.bind(this);
     this.checkToken = this.checkToken.bind(this);
     this.loadMovies = this.loadMovies.bind(this);
     this.loadSavedMovies = this.loadSavedMovies.bind(this);
@@ -81,6 +90,28 @@ class App extends React.PureComponent {
       .catch((err) => {
         console.error(err);
       });
+  }
+
+  closeTootlipHandler() {
+    this.setState({
+      isTooltipOpen: false,
+      tooltipData: {
+        type: '',
+        code: null,
+        message: '',
+      },
+    })
+  }
+
+  openTootlipHandler({ type, code = null, message }) {
+    this.setState({
+      isTooltipOpen: true,
+      tooltipData: {
+        type,
+        code,
+        message,
+      },
+    })
   }
 
   checkToken() {
@@ -271,6 +302,13 @@ class App extends React.PureComponent {
             <Route component={NotFoundPage} />
           </Switch>
         </div>
+        <Tooltip
+          isOpen={this.state.isTooltipOpen}
+          onClose={this.closeTootlipHandler}
+          type={this.state.tooltipData.type}
+          code={this.state.tooltipData.code}
+          message={this.state.tooltipData.message}
+        />
       </CurrentUserContext.Provider >
     );
   }
