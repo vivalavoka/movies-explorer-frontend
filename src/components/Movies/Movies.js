@@ -30,13 +30,18 @@ export default function Movies(props) {
   return (
     <section className="movies">
       <SearchForm className="movies__search-form" onSubmit={props.searchHandler} />
-      <MovieCardList className="movies__card-list" isLoading={props.isLoading} cards={limitedCards.map((card) => ({
-        id: card.id,
-        name: card.nameRU,
-        duration: card.duration,
-        image: card.image,
-        state: card.saved ? movieCardStates.saved : movieCardStates.to_save,
-      }))} onSaveMovie={props.onSaveMovie} />
+      <MovieCardList className="movies__card-list"
+        isLoading={props.isLoading}
+        cards={limitedCards.map((card) => ({
+          id: card.id,
+          name: card.nameRU,
+          duration: card.duration,
+          image: card.image,
+          state: card.saved ? movieCardStates.saved : movieCardStates.to_save,
+        }))}
+        onSaveMovie={props.onSaveMovie}
+        onDeleteMovie={props.onDeleteMovie}
+      />
       {limitedCards.length >= curCount ? <Button className="movies__more-btn" color="dark-gray" borderRadius="6" onClick={moreCardsHandler}>Ещё</Button> : null}
     </section>
   )

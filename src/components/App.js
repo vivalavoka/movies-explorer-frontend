@@ -40,6 +40,7 @@ class App extends React.PureComponent {
     };
     this.checkToken = this.checkToken.bind(this);
     this.loadMovies = this.loadMovies.bind(this);
+    this.loadSavedMovies = this.loadSavedMovies.bind(this);
     this.checkCardLimit = this.checkCardLimit.bind(this);
     this.setResizeEventHandler = this.setResizeEventHandler.bind(this);
     this.setMovies = this.setMovies.bind(this);
@@ -48,14 +49,38 @@ class App extends React.PureComponent {
     this.registerHandler = this.registerHandler.bind(this);
     this.authHandler = this.authHandler.bind(this);
     this.saveMovieHandler = this.saveMovieHandler.bind(this);
+    this.deleteMovieHandler = this.deleteMovieHandler.bind(this);
   }
 
   componentDidMount() {
-    this.checkToken().then(() => {
-      this.loadMovies();
-    });
     this.checkCardLimit();
     this.setResizeEventHandler();
+    this.checkToken()
+      .then(() => {
+        this.setState({
+          moviesLoading: true,
+          savedMoviesLoading: true,
+        });
+        return Promise.resolve();
+      })
+      .then(() => {
+        return this.loadSavedMovies();
+      })
+      .then(() => {
+        return this.loadMovies();
+      })
+      .then(() => {
+        return this.searchHandler({ text: '' });
+      })
+      .then(() => {
+        this.setState({
+          moviesLoading: false,
+          savedMoviesLoading: false,
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   checkToken() {
@@ -87,19 +112,17 @@ class App extends React.PureComponent {
 
   checkCardLimit() {
     const windowWith = window.screen.width;
+    let _cardLimit = cardLimit.big;
     if (windowWith < cardLimit.medium.minSize) {
-      this.setState({
-        cardLimit: cardLimit.small,
-      });
+      _cardLimit = cardLimit.small;
     } else if (windowWith < cardLimit.big.minSize) {
-      this.setState({
-        cardLimit: cardLimit.medium,
-      });
+      _cardLimit = cardLimit.medium;
     } else {
-      this.setState({
-        cardLimit: cardLimit.big,
-      });
+      _cardLimit = cardLimit.big;
     }
+    this.setState({
+      cardLimit: _cardLimit,
+    });
   }
 
   loadMovies() {
@@ -107,33 +130,26 @@ class App extends React.PureComponent {
     if (movies) {
       this.setMovies(movies);
     } else {
-      this.setState({
-        moviesLoading: true,
-      }, () => {
-        moviesApi.getMovies()
-          .then(res => {
-            if (res) {
-              this.setMovies(res);
-              this.saveMovies(res);
-              this.setState({
-                moviesLoading: false,
-              })
-            }
-          })
-          .catch(err => {
-            console.error(err);
-          });
-        mainApi.getSavedMovies()
-          .then(res => {
-            if (res) {
-              this.setSavedMovies(res);
-            }
-          })
-          .catch(err => {
-            console.error(err);
-          });
-      });
+      return moviesApi.getMovies()
+        .then(res => {
+          if (res) {
+            this.setMovies(res);
+            this.saveMovies(res);
+          }
+        })
     }
+  }
+
+  loadSavedMovies() {
+    return mainApi.getSavedMovies()
+      .then(res => {
+        if (res) {
+          this.setSavedMovies(res);
+        }
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   setMovies(movies) {
@@ -146,27 +162,24 @@ class App extends React.PureComponent {
           id: item.id,
           nameRU: item.nameRU,
           nameEN: item.nameEN,
+          year: item.year,
           country: item.country,
           director: item.director,
           duration: item.duration,
           description: item.description,
           image: url ? `${moviesUrl}${url}` : null,
-          trailer: item.trailerLink,
-          thumbnail: formats && formats.thumbnail && formats.thumbnail.url,
-          saved: this.state.movies.some(({ id }) => item.id === id),
+          trailer: item.trailerLink ? `${moviesUrl}${item.trailerLink}` : null,
+          thumbnail: formats && formats.thumbnail && formats.thumbnail.url ? `${moviesUrl}${formats.thumbnail.ur}` : null,
+          saved: this.state.savedMovies.some(({ movieId }) => item.id === movieId),
         };
       }),
-    }, () => {
-      this.searchHandler({ text: '' });
     });
   }
 
   setSavedMovies(savedMovies) {
     this.setState({
       savedMovies,
-    }, () => {
-      this.searchHandler({ text: '' });
-    })
+    });
   }
 
   setCurrentUser({ _id, name, email }) {
@@ -202,9 +215,15 @@ class App extends React.PureComponent {
   }
 
   saveMovieHandler(movieId) {
-    const movie = this.state.movies.find(({ id }) => id === movieId);
-    console.log('movie: ', movie);
-    return mainApi.saveMovie(movie);
+    const { id, saved, ...movie } = this.state.movies.find(({ id }) => id === movieId);
+    return mainApi.saveMovie({
+      ...movie,
+      movieId: id,
+    });
+  }
+
+  deleteMovieHandler(movieId) {
+    return mainApi.deleteMovie(movieId);
   }
 
   render() {
@@ -224,12 +243,24 @@ class App extends React.PureComponent {
             </ProtectedRoute>
             <ProtectedRoute path="/movies" loggedIn={this.state.loggedIn}>
               <Header loggedIn={this.state.loggedIn} />
-              <Movies cards={this.state.findedMovies} searchHandler={this.searchHandler} cardLimit={this.state.cardLimit} isLoading={this.state.moviesLoading} onSaveMovie={this.saveMovieHandler} />
+              <Movies
+                cards={this.state.findedMovies}
+                searchHandler={this.searchHandler}
+                cardLimit={this.state.cardLimit}
+                isLoading={this.state.moviesLoading}
+                onSaveMovie={this.saveMovieHandler}
+                onDeleteMovie={this.deleteMovieHandler}
+              />
               <Footer />
             </ProtectedRoute>
             <ProtectedRoute path="/saved-movies" loggedIn={this.state.loggedIn}>
               <Header loggedIn={this.state.loggedIn} />
-              <SavedMovies cards={this.state.findedSavedMovies} searchHandler={this.searchHandler} isLoading={this.state.savedMoviesLoading} />
+              <SavedMovies
+                cards={this.state.findedSavedMovies}
+                searchHandler={this.searchHandler}
+                isLoading={this.state.savedMoviesLoading}
+                onDeleteMovie={this.deleteMovieHandler}
+              />
               <Footer />
             </ProtectedRoute>
             <Route path="/" exact>

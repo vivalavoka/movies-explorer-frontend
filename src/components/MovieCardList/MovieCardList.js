@@ -13,7 +13,7 @@ export default function MovieCardList(props) {
             ? <ul className="card-list">
               {props.cards.map((card, index) => (
                 <li key={index} className="card-list__item">
-                  <MovieCard {...card} onSave={props.onSaveMovie} />
+                  <MovieCard {...card} onSave={props.onSaveMovie} onDelete={props.onDeleteMovie} />
                 </li>
               ))}
             </ul>

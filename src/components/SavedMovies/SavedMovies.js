@@ -7,13 +7,18 @@ import './SavedMovies.css';
 export default function SavedMovies(props) {
   return (
     <section className="movies">
-      <SearchForm className="movies__search-form" />
-      <MovieCardList className="movies__card-list" isLoading={props.isLoading} cards={props.cards.map((card) => ({
-        name: card.name,
-        duration: card.duration,
-        photo: card.photo,
-        state: card.saved ? movieCardStates.saved : movieCardStates.to_save,
-      }))} />
+      <SearchForm className="movies__search-form" onSubmit={props.searchHandler} />
+      <MovieCardList className="movies__card-list"
+        isLoading={props.isLoading}
+        cards={props.cards.map((card) => ({
+          id: card._id,
+          name: card.nameRU,
+          duration: card.duration,
+          image: card.image,
+          state: movieCardStates.delete,
+        }))}
+        onDeleteMovie={props.onDeleteMovie}
+      />
     </section>
   )
 };

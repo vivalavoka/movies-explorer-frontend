@@ -31,11 +31,13 @@ export default function MovieCard(props) {
 
   function onClickHandler() {
     switch (props.state) {
-      case movieCardStates.saved:
+      case movieCardStates.delete:
+        props.onDelete(props.id);
         break;
       case movieCardStates.to_save:
         props.onSave(props.id);
         break;
+      case movieCardStates.saved:
       default:
         break;
     }
