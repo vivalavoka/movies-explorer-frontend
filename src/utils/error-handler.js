@@ -1,10 +1,8 @@
 module.exports = (handler) => (err) => {
-    console.log('err: ', err);
-
-    const { code, message } = err;
+    const { message, data } = err;
     handler({
         type: 'error',
-        code: code || null,
         message,
+        data,
     });
 };

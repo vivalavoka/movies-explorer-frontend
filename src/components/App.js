@@ -32,8 +32,8 @@ class App extends React.PureComponent {
     this.state = {
       isTooltipOpen: false,
       tooltipData: {
+        title: '',
         type: '',
-        code: null,
         message: '',
       },
       loggedIn: false,
@@ -89,6 +89,10 @@ class App extends React.PureComponent {
           moviesLoading: false,
           savedMoviesLoading: false,
         });
+        this.openTootlipHandler({
+          type: 'success',
+          message: 'Вы успешно авторизованы',
+        });
         return this.searchHandler({ text: '' });
       });
   }
@@ -97,20 +101,22 @@ class App extends React.PureComponent {
     this.setState({
       isTooltipOpen: false,
       tooltipData: {
+        title: '',
         type: '',
-        code: null,
         message: '',
       },
     })
   }
 
-  openTootlipHandler({ type, code = null, message }) {
+  openTootlipHandler({ type, message, data }) {
+    const title = data && `Ошибка валидации`;
+    const _msg = data ? `Неверно указаны поля: ${data.body.keys}` : message;
     this.setState({
       isTooltipOpen: true,
       tooltipData: {
+        title,
         type,
-        code,
-        message,
+        message: _msg,
       },
     })
   }
@@ -274,7 +280,7 @@ class App extends React.PureComponent {
         });
         this.props.history.push('/signin');
       })
-      .catch(console.log);
+      .catch(console.error);
   }
 
   saveMovieHandler(movieId) {
@@ -345,8 +351,8 @@ class App extends React.PureComponent {
         <Tooltip
           isOpen={this.state.isTooltipOpen}
           onClose={this.closeTootlipHandler}
+          title={this.state.tooltipData.title}
           type={this.state.tooltipData.type}
-          code={this.state.tooltipData.code}
           message={this.state.tooltipData.message}
         />
       </CurrentUserContext.Provider >

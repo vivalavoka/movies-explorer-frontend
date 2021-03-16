@@ -3,10 +3,10 @@ import Button from '../Button/Button';
 
 import './Tooltip.css';
 
-function getTitle(type) {
+function getTitle(type, title) {
   switch (type) {
     case 'error':
-      return 'Ошибка';
+      return title || 'Ошибка';
     case 'success':
       return 'Успешно';
     case 'info':
@@ -18,7 +18,7 @@ function getTitle(type) {
 
 export default function Tooltip(props) {
   const isOpenned = props.isOpen && props.type;
-  const title = getTitle(props.type);
+  const title = getTitle(props.type, props.title);
 
   const message = props.message || 'Что-то пошло не так';
   return (
@@ -27,7 +27,6 @@ export default function Tooltip(props) {
         <p className="tooltip__title">{title}</p>
       </div>
       <div className="tooltip__body">
-        {props.code && <span className="tooltip__code">Code: {props.code}</span>}
         <p className="tooltip__message">{message}</p>
         <Button className="tooltip__btn" bordered borderRadius="40" onClick={props.onClose}>Закрыть</Button>
       </div>

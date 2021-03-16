@@ -11,14 +11,13 @@ class Api {
           return res.json();
         }
         return res.json()
-          .catch((err) => Promise.reject({
-            code: res.status,
-            message: err.message,
-          }))
-          .then(({ message }) => Promise.reject({
-            code: res.status,
-            message,
-          }))
+          .then((data) => {
+            return Promise.reject({
+              code: data.statusCode,
+              message: data.message,
+              data: data.validation || {},
+            });
+          })
       });
   }
 }
