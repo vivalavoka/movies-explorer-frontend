@@ -2,7 +2,7 @@ import React from 'react';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext.js';
 
-import Form from '../Form/Form';
+import { isNameValid } from '../../utils/validator';
 import Button from '../Button/Button';
 import List from '../List/List';
 import './Profile.css';
@@ -16,14 +16,21 @@ const STATE = {
 function Profile(props) {
   const currentUser = React.useContext(CurrentUserContext);
 
-  // const [profileName, setProfileName] = React.useState(currentUser.name);
-  // const [profileEmail, setProfileEmail] = React.useState(currentUser.email);
-  const [profileName, setProfileName] = React.useState('Владимир');
-  const [profileEmail, setProfileEmail] = React.useState('ex@mple.com');
-
+  const [profileName, setProfileName] = React.useState(currentUser.name);
+  const [profileEmail, setProfileEmail] = React.useState(currentUser.email);
+  const [isValid, setValid] = React.useState(false);
   const [profileState, setProfileState] = React.useState(STATE.info);
+
+  const inputName = React.useRef(null);
+  const inputEmail = React.useRef(null);
+
+  React.useEffect(() => {
+    hasInvalidInput();
+  }, []);
+
   function editProfileHandler() {
     setProfileState(STATE.edit);
+    inputName.current.focus();
   }
 
   function handleChange(e) {
@@ -38,6 +45,11 @@ function Profile(props) {
       default:
         break;
     }
+    hasInvalidInput();
+  }
+
+  function hasInvalidInput() {
+    setValid(isNameValid(inputName.current.value) && inputEmail.current.validity.valid);
   }
 
   function handleSubmit(e) {
@@ -59,11 +71,11 @@ function Profile(props) {
           <fieldset className="form__fieldset">
             <label className="profile__info-item">
               <span className="profile__info-key">Имя</span>
-              <input disabled={profileState !== STATE.edit} name="profile-name" id="profile-name" className="input profile__info-value" type="text" required onChange={handleChange} value={profileName} />
+              <input disabled={profileState !== STATE.edit} ref={inputName} name="profile-name" id="profile-name" className="input profile__info-value" type="text" required onChange={handleChange} value={profileName} />
             </label>
             <label className="profile__info-item">
               <span className="profile__info-key">Почта</span>
-              <input disabled={profileState !== STATE.edit} name="profile-email" id="profile-email" className="input profile__info-value" type="email" required onChange={handleChange} value={profileEmail} />
+              <input disabled={profileState !== STATE.edit} ref={inputEmail} name="profile-email" id="profile-email" className="input profile__info-value" type="email" required onChange={handleChange} value={profileEmail} />
             </label>
           </fieldset>
           <fieldset className="form__fieldset">
@@ -74,7 +86,7 @@ function Profile(props) {
               </List>
               : <List vertical={true}>
                 <li className="profile__action-item"><span className="profile__error-msg"></span></li>
-                <li className="profile__action-item"><Button type="submit" disabled={profileState === STATE.saving} className="profile__save-btn" color="blue" borderRadius="3" >Сохранить</Button></li>
+                <li className="profile__action-item"><Button type="submit" disabled={profileState === STATE.saving || !isValid} className="profile__save-btn" color="blue" borderRadius="3" >Сохранить</Button></li>
               </List>
             }
           </fieldset>

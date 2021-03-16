@@ -36,7 +36,7 @@ class App extends React.PureComponent {
         code: null,
         message: '',
       },
-      loggedIn: true,
+      loggedIn: false,
       cardLimit: {},
       movies: [],
       findedMovies: [],
