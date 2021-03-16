@@ -39,10 +39,12 @@ class App extends React.PureComponent {
       loggedIn: false,
       cardLimit: {},
       movies: [],
+      moviesFilter: { text: '', shortFilmsOnly: false },
       findedMovies: [],
       moviesLoading: false,
       savedMovies: [],
       findedSavedMovies: [],
+      savedMoviesFilter: { text: '', shortFilmsOnly: false },
       savedMoviesLoading: false,
       currentUser: {},
     };
@@ -56,13 +58,16 @@ class App extends React.PureComponent {
     this.setResizeEventHandler = this.setResizeEventHandler.bind(this);
     this.setMovies = this.setMovies.bind(this);
     this.setSavedMovies = this.setSavedMovies.bind(this);
-    this.searchHandler = this.searchHandler.bind(this);
+    this.setSavedMoviesFilter = this.setSavedMoviesFilter.bind(this);
+    this.setMoviesFilter = this.setMoviesFilter.bind(this);
     this.registerHandler = this.registerHandler.bind(this);
     this.authHandler = this.authHandler.bind(this);
     this.updateProfileHandler = this.updateProfileHandler.bind(this);
     this.logoutHandler = this.logoutHandler.bind(this);
     this.saveMovieHandler = this.saveMovieHandler.bind(this);
     this.deleteMovieHandler = this.deleteMovieHandler.bind(this);
+    this.filterMovies = this.filterMovies.bind(this);
+    this.filterSavedMovies = this.filterSavedMovies.bind(this);
     this.catcher = ErrorHandler(this.openTootlipHandler);
   }
 
@@ -89,11 +94,6 @@ class App extends React.PureComponent {
           moviesLoading: false,
           savedMoviesLoading: false,
         });
-        this.openTootlipHandler({
-          type: 'success',
-          message: 'Вы успешно авторизованы',
-        });
-        return this.searchHandler({ text: '' });
       });
   }
 
@@ -206,12 +206,16 @@ class App extends React.PureComponent {
           saved: this.state.savedMovies.some(({ movieId }) => item.id === movieId),
         };
       }),
+    }, () => {
+      this.filterMovies();
     });
   }
 
   setSavedMovies(savedMovies = []) {
     this.setState({
       savedMovies,
+    }, () => {
+      this.filterSavedMovies();
     });
   }
 
@@ -229,10 +233,37 @@ class App extends React.PureComponent {
     localStorage.setItem('movies', JSON.stringify(movies));
   }
 
-  searchHandler(filter) {
+  filterMovies() {
     this.setState({
-      findedMovies: cardFilter(this.state.movies)(filter),
-      findedSavedMovies: cardFilter(this.state.savedMovies)(filter),
+      findedMovies: cardFilter(this.state.movies)(this.state.moviesFilter),
+    });
+  }
+
+  filterSavedMovies() {
+    this.setState({
+      findedSavedMovies: cardFilter(this.state.savedMovies)(this.state.savedMoviesFilter),
+    });
+  }
+
+  setMoviesFilter({ text = '', shortFilmsOnly }) {
+    this.setState({
+      moviesFilter: {
+        text,
+        shortFilmsOnly
+      }
+    }, () => {
+      this.filterMovies();
+    });
+  }
+
+  setSavedMoviesFilter({ text = '', shortFilmsOnly }) {
+    this.setState({
+      savedMoviesFilter: {
+        text,
+        shortFilmsOnly
+      }
+    }, () => {
+      this.filterSavedMovies();
     });
   }
 
@@ -300,6 +331,12 @@ class App extends React.PureComponent {
 
   deleteMovieHandler(movieId) {
     return mainApi.deleteMovie(movieId)
+      .then(() => {
+        return this.loadSavedMovies();
+      })
+      .then(() => {
+        return this.loadMovies();
+      })
       .catch(this.catcher);
   }
 
@@ -322,7 +359,8 @@ class App extends React.PureComponent {
               <Header loggedIn={this.state.loggedIn} />
               <Movies
                 cards={this.state.findedMovies}
-                searchHandler={this.searchHandler}
+                filter={this.state.moviesFilter}
+                setFilter={this.setMoviesFilter}
                 cardLimit={this.state.cardLimit}
                 isLoading={this.state.moviesLoading}
                 onSaveMovie={this.saveMovieHandler}
@@ -334,7 +372,8 @@ class App extends React.PureComponent {
               <Header loggedIn={this.state.loggedIn} />
               <SavedMovies
                 cards={this.state.findedSavedMovies}
-                searchHandler={this.searchHandler}
+                filter={this.state.savedMoviesFilter}
+                setFilter={this.setSavedMoviesFilter}
                 isLoading={this.state.savedMoviesLoading}
                 onDeleteMovie={this.deleteMovieHandler}
               />
