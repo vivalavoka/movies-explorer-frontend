@@ -233,6 +233,10 @@ class App extends React.PureComponent {
   registerHandler({ name, email, password }) {
     return mainApi.register(name, email, password)
       .then(() => {
+        this.openTootlipHandler({
+          type: 'success',
+          message: 'Пользователь успешно зарегистрирован',
+        });
         this.props.history.push('/signin');
       })
       .catch(this.catcher);
@@ -252,6 +256,10 @@ class App extends React.PureComponent {
         return mainApi.getProfile();
       })
       .then(res => {
+        this.openTootlipHandler({
+          type: 'success',
+          message: 'Изменения сохранены',
+        });
         this.setCurrentUser(res);
       })
       .catch(this.catcher);
@@ -260,9 +268,13 @@ class App extends React.PureComponent {
   logoutHandler() {
     return mainApi.logout()
       .then(() => {
+        this.openTootlipHandler({
+          type: 'info',
+          message: 'Вы вышли из системы',
+        });
         this.props.history.push('/signin');
       })
-      .catch(this.catcher);
+      .catch(console.log);
   }
 
   saveMovieHandler(movieId) {

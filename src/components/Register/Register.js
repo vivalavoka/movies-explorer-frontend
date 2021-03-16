@@ -45,10 +45,10 @@ function Register(props) {
   }
 
   function checkName() {
-    if (inputName.current.validity.valid) {
+    if (isNameValid(inputName.current.value)) {
       setNameError('');
     } else {
-      setNameError('Имя должен состоять только из латиницы, пробелов и дефисов');
+      setNameError('Имя должно состоять только из знаков латиницы, пробелов и дефисов');
     }
   }
 
