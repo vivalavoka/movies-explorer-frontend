@@ -9,7 +9,7 @@ import './ToggleButton.css';
 export default function ToggleButton(props) {
   return (
     <div className="toggle-button__container">
-      <input type="checkbox" name={props.name} id={props.name} className="toggle-button__input" />
+      <input type="checkbox" name={props.name} id={props.name} className="toggle-button__input" checked={props.checked} onChange={props.onChange} />
       <label htmlFor={props.name} className="toggle-button__text">{props.text}</label>
     </div>
   )

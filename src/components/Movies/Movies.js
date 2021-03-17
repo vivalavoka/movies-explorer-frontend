@@ -1,39 +1,49 @@
 import React from 'react';
-import { Route } from "react-router";
 import MovieCardList from '../MovieCardList/MovieCardList';
 import SearchForm from '../SearchForm/SearchForm';
+import { movieCardStates } from '../../utils/constants';
 import './Movies.css';
 
-import MovieCardPhoto_1 from '../../images/movie-card_1.png';
-import MovieCardPhoto_2 from '../../images/movie-card_2.png';
-import MovieCardPhoto_3 from '../../images/movie-card_3.png';
 import Button from '../Button/Button';
 
-
 export default function Movies(props) {
+  const [curCount, setCurCount] = React.useState(props.cardLimit.count);
+  const [limitedCards, setLimitedCards] = React.useState([]);
+
+  const { cardLimit, cards } = props;
+
+  React.useEffect(() => {
+    if (curCount) {
+      setLimitedCards(cards.slice(0, curCount));
+    }
+  }, [curCount, cards]);
+
+  if (!curCount && cardLimit.count) {
+    setCurCount(cardLimit.count);
+  }
+
+  function moreCardsHandler() {
+    setCurCount(curCount + cardLimit.more);
+    setLimitedCards(cards.slice(0, curCount));
+  }
+
   return (
     <section className="movies">
-      <SearchForm className="movies__search-form" />
-      <MovieCardList className="movies__card-list" cards={[{
-          name: "В погоне за Бенкси",
-          duration: "27 минут",
-          photo: MovieCardPhoto_1,
-          state: "saved",
-        }, {
-          name: "В погоне за Бенкси",
-          duration: "27 минут",
-          photo: MovieCardPhoto_2,
-          state: "delete",
-        }, {
-          name: "В погоне за Бенкси",
-          duration: "27 минут",
-          photo: MovieCardPhoto_3,
-          state: "toSave",
-        }]}
+      <SearchForm className="movies__search-form" filter={props.filter} onSubmit={props.setFilter} />
+      <MovieCardList className="movies__card-list"
+        isLoading={props.isLoading}
+        cards={limitedCards.map((card) => ({
+          id: card.id,
+          name: card.nameRU,
+          duration: card.duration,
+          image: card.image,
+          trailer: card.trailer,
+          state: card.saved ? movieCardStates.saved : movieCardStates.to_save,
+        }))}
+        onSaveMovie={props.onSaveMovie}
+        onDeleteMovie={props.onDeleteMovie}
       />
-      <Route path="/movies">
-        <Button className="movies__more-btn" color="dark-gray" borderRadius="6">Ещё</Button>
-      </Route>
+      {limitedCards.length >= curCount ? <Button className="movies__more-btn" color="dark-gray" borderRadius="6" onClick={moreCardsHandler}>Ещё</Button> : null}
     </section>
   )
 };

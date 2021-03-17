@@ -3,7 +3,7 @@
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 360px));
   column-gap: 28px;
   row-gap: 32px;
 }
@@ -13,9 +13,21 @@
   padding: 0;
 }
 
+.card-list__not-found-msg {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  color: #FFF;
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
 @media (max-width: 768px) {
   .card-list {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 335px));
     column-gap: 24px;
     row-gap: 35px;
   }
@@ -23,7 +35,7 @@
 
 @media (max-width: 540px) {
   .card-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, max-content);
     row-gap: 14px;
   }
 }

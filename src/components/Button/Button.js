@@ -14,6 +14,6 @@ export default function Button(props) {
   const _color = color ? `button_color_${color}` : '';
   const _borderRadius = borderRadius ? `button_border-radius_${borderRadius}` : '';
   return (
-    <button type={props.type} className={`${className} button ${_bordered} ${_color} ${_borderRadius}`} disabled={disabled} onClick={onClick}>{props.children}</button>
+    <button type={props.type || 'button'} className={`${className} button ${_bordered} ${_color} ${_borderRadius}`} disabled={disabled} onClick={onClick}>{props.children}</button>
   );
 }

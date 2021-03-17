@@ -43,6 +43,10 @@
 }
 
 .profile__info-value {
+  text-align: right;
+  background-color: inherit;
+  border: 0;
+  outline: 0;
   color: #FFF;
   font-size: 11px;
   line-height: 1.2;
